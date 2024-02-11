@@ -1,0 +1,43 @@
+.active a{
+    background: #0f1015;
+    color: #FFFFFF;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #DC3545;
+    border-color: #DC3545;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #DC3545;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-120%, -80%);
+    cursor: pointer;
+    display: none;
+}
+
+.view-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-5%, -80%);
+    cursor: pointer;
+    display: none;
+}
+
+.media-container:hover img, .media-container:hover video {
+    opacity: 0.5;
+}
+
+.media-container:hover .delete-btn {
+    display: block;
+}
+
+.media-container:hover .view-btn {
+    display: block;
+}

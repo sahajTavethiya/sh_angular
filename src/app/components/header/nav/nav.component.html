@@ -1,0 +1,38 @@
+<nav class="navbar p-0 fixed-top d-flex flex-row justify-content-between">
+    <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center">
+        <a class="navbar-brand brand-logo-mini" href="/dashboard"><img src="assets/images/logo-mini.png"
+                alt="logo" /></a>
+    </div>
+    <div class="navbar-menu-wrapper flex-grow d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                    <div class="navbar-profile">
+                        <img class="img-xs rounded-circle" src="{{FullUrlForUserImageShow}}" alt="Profile Photo"
+                            style="object-fit: cover;">
+                        <i class="fa-solid fa-caret-down d-none d-sm-block ml-1"></i>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                    aria-labelledby="profileDropdown">
+                    <h4 class="p-3 mb-0 bg-dark text-light">Profile</h4>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item bg-dark text-light" (click)="logOut()">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle text-danger">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1" (click)="logOut()">Log out</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            (click)="toggleSidebar()">
+            <span><i class="fa-solid fa-bars"></i></span>
+        </button>
+    </div>
+</nav>

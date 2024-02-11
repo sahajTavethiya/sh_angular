@@ -1,0 +1,96 @@
+@if(isLoading) {
+<div class="loader">
+    <svg class="car" width="102" height="40" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2 1)" stroke="#FC424A" fill="none" fill-rule="evenodd" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path class="car__body"
+                d="M47.293 2.375C52.927.792 54.017.805 54.017.805c2.613-.445 6.838-.337 9.42.237l8.381 1.863c2.59.576 6.164 2.606 7.98 4.531l6.348 6.732 6.245 1.877c3.098.508 5.609 3.431 5.609 6.507v4.206c0 .29-2.536 4.189-5.687 4.189H36.808c-2.655 0-4.34-2.1-3.688-4.67 0 0 3.71-19.944 14.173-23.902zM36.5 15.5h54.01"
+                stroke-width="3" />
+            <ellipse class="car__wheel--left" stroke-width="3.2" fill="#FFF" cx="83.493" cy="30.25" rx="6.922"
+                ry="6.808" />
+            <ellipse class="car__wheel--right" stroke-width="3.2" fill="#FFF" cx="46.511" cy="30.25" rx="6.922"
+                ry="6.808" />
+            <path class="car__line car__line--top" d="M22.5 16.5H2.475" stroke-width="3" />
+            <path class="car__line car__line--middle" d="M20.5 23.5H.4755" stroke-width="3" />
+            <path class="car__line car__line--bottom" d="M25.5 9.5h-19" stroke-width="3" />
+        </g>
+    </svg>
+</div>
+} @else {
+<div class="container-scroller">
+
+    <app-menu></app-menu>
+
+    <div class="page-body-wrapper">
+        <app-nav></app-nav>
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 mb-3 d-flex flex-wrap justify-content-between">
+                        <h2 class="text-light">Car Importer Detail</h2>
+                        <button type="button" class="btn btn-secondary" (click)="backToDelerPage()">Back</button>
+                    </div>
+                    <div class="col-12">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="delerDetail-tab" data-toggle="tab"
+                                    (click)="showDetailsTab()" data-target="#delerDetail" type="button" role="tab"
+                                    aria-controls="delerDetail" aria-selected="true">Details</button>
+                            </li>
+                            @if(canViewInventory){
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="carDetail-tab" data-toggle="tab" data-target="#carDetail"
+                                    (click)="showCarInventoryTab()" type="button" role="tab" aria-controls="carDetail"
+                                    aria-selected="false">Car Inventory</button>
+                            </li>
+                            }
+                            @if(canViewSubscription){
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="subscriptionHistory-tab" data-toggle="tab"
+                                    data-target="#subscriptionHistory" (click)="showSubscriptionHistoryTab()"
+                                    type="button" role="tab" aria-controls="subscriptionHistory"
+                                    aria-selected="false">Subscription History</button>
+                            </li>
+                            }
+                            @if(canViewInquiry){
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="dealerInquiry-tab" data-toggle="tab"
+                                    data-target="#dealerInquiry" (click)="showDealerInquiryTab()" type="button"
+                                    role="tab" aria-controls="dealerInquiry" aria-selected="false">Importer Inquiry</button>
+                            </li>
+                            }
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="delerDetail" role="tabpanel"
+                                aria-labelledby="delerDetail-tab">
+                                @if (activeTab === 'details') {
+                                <app-single-dealer-detail></app-single-dealer-detail>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="carDetail" role="tabpanel" aria-labelledby="carDetail-tab">
+                                @if (activeTab === 'carInventory') {
+                                <app-single-dealer-car-list></app-single-dealer-car-list>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="subscriptionHistory" role="tabpanel"
+                                aria-labelledby="subscriptionHistory-tab">
+                                @if (activeTab === 'subscriptionHistory') {
+                                <app-dealer-subscription-history></app-dealer-subscription-history>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="dealerInquiry" role="tabpanel"
+                                aria-labelledby="dealerInquiry-tab">
+                                @if (activeTab === 'dealerInquiry') {
+                                <app-dealer-inquiry></app-dealer-inquiry>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

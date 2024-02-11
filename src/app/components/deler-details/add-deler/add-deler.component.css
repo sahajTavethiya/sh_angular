@@ -1,0 +1,10 @@
+.active a{
+    background: #0f1015;
+    color: #FFFFFF;
+}
+
+.suggestion-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  /* Add other styles as needed */
+}
