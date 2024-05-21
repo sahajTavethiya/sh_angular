@@ -1,0 +1,163 @@
+<section class="manageServiceRequestPage " [formGroup]="requestForm">
+  <!-- *ngIf="requestForm" -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Add Transaction</h1>
+    </div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-12 col-md-8 requestFormDataWrap">
+        <!-- <label>Requisition ID: </label>
+              <div>
+                  <a (click)="viewCustomerDetails()" href="javascript:void(0);">{{data.requisitionId}}
+                  </a>
+              </div>
+              <label>Create:</label>
+              <div>{{data.createdOn}}</div>
+              <label>Created By:</label>
+              <div>{{data.createdByName}}</div>
+              <label>Status:</label>
+              <div>{{data.status}}</div> -->
+      </div>
+
+    </div>
+  </form>
+  <form>
+    <div class="row">
+      <div class="col-12 col-md-8 requestFormDataWrap">
+        <!-- <label>Client:</label>
+                  <div>{{ requestForm.controls.request.get('currentClientValue')?.value }}</div> -->
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="btnWrap">
+          <mat-menu #menu="matMenu">
+          </mat-menu> &nbsp;
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" *ngIf="requestForm">
+        <!-- <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Purchase Order
+            </ng-template>
+            <ng-template matTabContent>
+              <mat-card>
+                <app-purchase-order-add [requestForm]="requestForm"></app-purchase-order-add>
+              </mat-card>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group> -->
+
+        <mat-card-content *ngIf="requestForm" [formGroup]="requestForm" style="height: auto;">
+          <div class="row">
+            <div class="col-3" style="padding-bottom: 20px">
+              <label class="padding">Money Source : </label>
+              <!-- <input type="text" formControlName="name" class="form-control"/> -->
+              <p-dropdown
+                [options]="moneySourceArr"
+                class="ui-input"
+                optionValue="KeyName"
+                formControlName="moneySource"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+              >
+              </p-dropdown>
+            </div>
+            
+            <div class="col-3" style="padding-bottom: 20px" >
+              <label class="padding">Transaction Type : </label>
+              <!-- <input type="text" formControlName="name" class="form-control"/> -->
+              <p-dropdown
+                [options]="transactionTypeArr"
+                class="ui-input"
+                optionValue="keyName"
+                formControlName="transactionTypeId"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+                (onChange)="changeTransactionType()"
+              >
+              </p-dropdown>
+            </div>
+            <div class="col-3" style="padding-bottom: 20px">
+              <label class="padding">Transaction For : </label>
+              <p-dropdown
+                [options]="TransactionForArr"
+                class="ui-input"
+                optionValue="keyName"
+                formControlName="transactionForId"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+                (onChange)="setValueOfTransactionFor()"
+              >
+              </p-dropdown>
+            </div>
+            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 1 && requestForm.get('transactionTypeId')?.value == 1">
+              <label class="padding">PaymentBy : </label>
+              <!-- <input type="text" formControlName="name" class="form-control"/> -->
+              <p-dropdown
+                [options]="PaymentByMaster"
+                class="ui-input"
+                optionValue="KeyName"
+                formControlName="paymentById"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+              >
+              </p-dropdown>
+            </div>
+            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 5 && requestForm.get('transactionTypeId')?.value == 2">
+              <label class="padding">PaymentBy : </label>
+              <!-- <input type="text" formControlName="name" class="form-control"/> -->
+              <p-dropdown
+                [options]="PaymentToMaster"
+                class="ui-input"
+                optionValue="keyName"
+                formControlName="employeeId"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+              >
+              </p-dropdown>
+            </div>
+            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 6 && requestForm.get('transactionTypeId')?.value == 2">
+              <label class="padding">PaymentBy : </label>
+              <!-- <input type="text" formControlName="name" class="form-control"/> -->
+              <p-dropdown
+                [options]="VendorMaster"
+                class="ui-input"
+                optionValue="keyName"
+                formControlName="vendorId"
+                optionLabel="DisplayText"
+                placeholder="-Select-"
+              >
+              </p-dropdown>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3" style="padding-bottom: 20px">
+              <label class="padding">Amount : </label>
+              <input type="number" formControlName="amount" class="form-control"/>
+            </div>
+            <div class="col-3" style="padding-bottom: 20px">
+              <label class="padding"> Note: </label>
+              <input type="text" formControlName="note" class="form-control"/>
+            </div>
+            
+          </div>
+        </mat-card-content>
+        <div class="row">
+          <div class="col-12">
+            <div class="btnWrap mt-4">
+              <button mat-button color="secondary" type="button" (click)="onCancel();">Cancel</button>
+              <button mat-button color="primary" type="submit"
+                (click)="onSave();">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+
