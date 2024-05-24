@@ -1,7 +1,7 @@
 <mat-card-content *ngIf="RequestDetail && requestForm" [formGroup]="RequestDetail" class="formWrap"
-    style="margin-bottom: 100px;">
+    style="margin-bottom: 170px;">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Work Type :</label>
                 <p-dropdown [options]="WorkTypeMaster" class="ui-input" optionValue="KeyName"
@@ -13,7 +13,7 @@
     </div>
     <div *ngIf="selectedWorkType == 1">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Client : </label>
                     <p-dropdown [options]="ClietMaster" class="ui-input" optionValue="KeyName"
@@ -24,7 +24,7 @@
                 </p-dropdown> -->
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Product : </label>
                     <p-dropdown [options]="ProductMaster" class="ui-input" optionValue="KeyName"
@@ -35,11 +35,11 @@
                 </p-dropdown> -->
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Size : </label>
                     <p-dropdown [options]="SizeMaster" class="ui-input" optionValue="KeyName" formControlName="SizeId"
-                        optionLabel="DisplayText" placeholder="-Select-">
+                        optionLabel="DisplayText" placeholder="-Select-" [filter]="true">
                     </p-dropdown>
                     <!-- <p-dropdown [options]="serviceNames" class="ui-input" optionValue="keyName" formControlName="serviceId" optionLabel="displayText" placeholder="-Select-">
                 </p-dropdown> -->
@@ -50,21 +50,21 @@
 
     <div *ngIf="selectedWorkType == 1">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Design :<span class="mandatoryField">*</span></label>
                     <p-dropdown [options]="DesignMaster" class="ui-input" [required]="true" optionValue="KeyName"
-                        formControlName="DesignId" optionLabel="DisplayText" placeholder="-Select-">
+                        formControlName="DesignId" optionLabel="DisplayText" placeholder="-Select-" [filter]="true">
                     </p-dropdown>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Total Item<span class="mandatoryField">*</span></label>
                     <input pInputText class="form-control" formControlName="TotalItem" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Amount Per Item<span class="mandatoryField">*</span></label>
                     <input pInputText class="form-control" formControlName="AmountPerOneItem" />
@@ -74,13 +74,13 @@
     </div>
     <div *ngIf="selectedWorkType == 1">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>BillNo<span class="mandatoryField">*</span></label>
                     <input pInputText class="form-control" formControlName="BillNo" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Status</label>
                     <p-dropdown [options]="StatusMaster" class="ui-input" optionValue="KeyName"
@@ -88,7 +88,7 @@
                     </p-dropdown>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>HSN Code :</label>
                     <p-dropdown [options]="HSN_CodeMaster" class="ui-input" optionValue="KeyName"
@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="row" *ngIf="selectedWorkType == 2">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Vendor</label>
                 <p-dropdown [options]="VendorMaster" class="ui-input" optionValue="keyName" formControlName="Vendor"
@@ -107,13 +107,13 @@
                 </p-dropdown>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Bill <span class="mandatoryField">*</span></label>
                 <input pInputText class="form-control" formControlName="BillNo">
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Total Item<span class="mandatoryField">*</span></label>
                 <input pInputText class="form-control" formControlName="Qty" />
@@ -122,13 +122,13 @@
     </div>
     <div class="row" *ngIf="selectedWorkType == 2">
 
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Amount Per Item<span class="mandatoryField">*</span></label>
                 <input pInputText class="form-control" formControlName="AmountPerOneItem" />
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Unit Of Measuremrnt</label>
                 <p-dropdown [options]="MeasurementMaster" class="ui-input" optionValue="KeyName" formControlName="UOM"

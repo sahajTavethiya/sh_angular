@@ -85,9 +85,11 @@
                 <div>
                     <button type="button" (click)="reset()" color="secondary"
                         class="mat-focus-indicator mat-button mat-button-base mat-secondary" mat-button>Reset</button>
-                    <button type="submit" (click)="search()" mat-button
+                        <button mat-button color="primary" type="submit" (click)="search();"
+                        >Submit</button>
+                    <!-- <button type="submit" (click)="search()" mat-button
                         class="mat-focus-indicator mat-button mat-button-base mat-secondary"
-                        color="primary">Search</button>
+                        color="primary">Search</button> -->
                 </div>
             </div>
         </form>
@@ -143,16 +145,16 @@
                         <td><a target="_blank" [routerLink]="['OrderReportDetail',rowData.OrderId]">{{ rowData.OrderId
                                 }}</a>
                         </td>
-                        <td>{{rowData.WorkType}}</td>
-                        <td>{{rowData.ProductName}}</td>
+                        <!-- <td>{{rowData.WorkType}}</td> -->
+                        <!-- <td>{{rowData.ProductName}}</td> -->
                         <td>{{rowData.ClientName}}</td>
-                        <td>{{rowData.DesignName}}</td>
-                        <td>{{rowData.Size}}</td>
-                        <td>{{rowData.TotalItem || rowData.qty}}</td>
-                        <td>{{rowData.AmountPerOneItem }}</td>
-                        <td>{{rowData.TotalAmount }}</td>
+                        <!-- <td>{{rowData.DesignName}}</td> -->
+                        <!-- <td>{{rowData.Size}}</td>; -->
+                        <!-- <td>{{rowData.TotalItem || rowData.qty}}</td> -->
+                        <!-- <td>{{rowData.AmountPerOneItem }}</td> -->
+                        <!-- <td>{{rowData.TotalAmount }}</td> -->
                         <td>{{rowData.BillNo}}</td>
-                        <td>{{rowData.UOM}}</td>
+                        <!-- <td>{{rowData.UOM}}</td> -->
                         <!-- <td><p-button class="cust-button-primary" (click)="SubmitOrder(rowData.OrderId)">Submit Order
                         </p-button></td> -->
                         <td>{{ rowData.Date !== null ?

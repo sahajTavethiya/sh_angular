@@ -52,6 +52,7 @@ import { CustomerDetailComponent } from './portal/reports/customer-master/custom
 import { TransactionMasterGridComponent } from './portal/reports/transation-master/transaction-master-grid/transaction-master-grid.component';
 import { TransactionMasterAddComponent } from './portal/reports/transation-master/transaction-master-add/transaction-master-add.component';
 import { JobWorkOrderGridComponent } from './portal/reports/job-work-order-grid/job-work-order-grid.component';
+import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-order-detail.component';
 
 const routes: Routes = [
   {
@@ -89,9 +90,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: OrderDetailComponent
   }, {
-    path: 'OrderReport/OrderReportDetail/:id',
+    path: 'JobWorkOrder/OrderReportDetail/:id',
     canActivate: [AuthGuard],
     component: OrderDetailComponent
+  },
+  {
+    path: 'JobWorkOrderReportDetail',
+    canActivate: [AuthGuard],
+    component: JobWorkOrderDetailComponent
+  }, {
+    path: 'OrderReport/JobWorkOrderReportDetail/:id',
+    canActivate: [AuthGuard],
+    component: JobWorkOrderDetailComponent
   },
   {
     path: 'DailyWork',

@@ -12,8 +12,14 @@ export class OrderReportServiceService extends BaseService {
   getOrderReport(reqData: any) {
     return this.api.post<Array<any>>(this.apiProxy.Common.getOrderReport(), reqData);
   }
+  getJobWorkOrderReportGrid(reqData: any) {
+    return this.api.post<Array<any>>(this.apiProxy.Common.getJobWorkOrderReportGrid(), reqData);
+  }
   saveOrder(ReqData: any) {
     return this.api.post<Array<any>>(this.apiProxy.Common.saveOrder(), ReqData)
+  }
+  addJobWorkOrder(ReqData: any) {
+    return this.api.post<Array<any>>(this.apiProxy.Common.addJobWorkOrder(), ReqData)
   }
   getOrderDetailById(ReqData: any) {
     return this.api.post<Array<any>>(this.apiProxy.Common.getOrderDetailById(), ReqData)

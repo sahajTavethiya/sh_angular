@@ -144,16 +144,16 @@ export class JobWorkOrderGridComponent implements OnInit {
   bindColumns() {
     this.cols = [
       { header: 'Order Id', field: 'OrderId' },
-      { header: 'Work Type', field: 'WorkType' },
-      { header: 'Product Name', field: 'ProductName' },
+      // { header: 'Work Type', field: 'WorkType' },
+      // { header: 'Product Name', field: 'ProductName' },
       { header: 'Client Name', field: 'ClientName' },
-      { header: 'Design Name', field: 'DesignName' },
-      { header: 'Size', field: 'Size' },
-      { header: 'Total Item', field: 'TotalItem' },
-      { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
-      { header: 'Total Amount', field: 'TotalAmount' },
+      // { header: 'Design Name', field: 'DesignName' },
+      // { header: 'Size', field: 'Size' },
+      // { header: 'Total Item', field: 'TotalItem' },
+      // { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
+      // { header: 'Total Amount', field: 'TotalAmount' },
       { header: 'Bill No', field: 'BillNo' },
-      { header: 'UOM', field: 'UOM' },
+      // { header: 'UOM', field: 'UOM' },
       // { header: 'SubmitOrder',field:'submitOrder'},
       { header: 'Date', field: 'Date' },
     ];
@@ -191,7 +191,7 @@ export class JobWorkOrderGridComponent implements OnInit {
         toDate: data.toDate,
         take: this.paginateData[1],
         skip: this.paginateData[0],
-        orderBy: this.sotingname == '' ? 'OM.CreatedOn Desc' : this.sotingname + ' ' + this.OrderBy,
+        orderBy: this.sotingname == '' ? 'JOM.CreatedOn Desc' : this.sotingname + ' ' + this.OrderBy,
         clientId:
           data.clientId && data.clientId.length > 0 ? data.clientId : [],
         productId:
@@ -246,7 +246,7 @@ export class JobWorkOrderGridComponent implements OnInit {
       // console.log(this.displayArr);
 
       this.service
-        .getOrderReport(this.searchData)
+        .getJobWorkOrderReportGrid(this.searchData)
         .subscribe((response: any) => {
           if (response && response.data && response.data.length > 0) {
             this.Material_Details = response.data;
@@ -299,7 +299,7 @@ export class JobWorkOrderGridComponent implements OnInit {
   }
 
   addOrder() {
-    this.routeUrl.navigate(['/OrderReportDetail']);
+    this.routeUrl.navigate(['/JobWorkOrderReportDetail']);
   }
   reset() {
     this.searchForm.reset();

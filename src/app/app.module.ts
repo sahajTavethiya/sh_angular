@@ -102,6 +102,8 @@ import { SubmitPartiallyOrderPopUpComponent } from './portal/reports/order-repor
 import { JobWorkOrderGridComponent } from './portal/reports/job-work-order-grid/job-work-order-grid.component';
 import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-order-detail.component';
 import { JobWorkBasicOrderComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-basic-order/job-work-basic-order.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { JObWorkProductDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-product-detail/job-work-product-detail.component';
 
 @NgModule({
   declarations: [
@@ -184,6 +186,8 @@ import { JobWorkBasicOrderComponent } from './portal/reports/job-work-order-grid
     JobWorkOrderGridComponent,
     JobWorkOrderDetailComponent,
     JobWorkBasicOrderComponent,
+    HomePageComponent,
+    JObWorkProductDetailComponent,
   ],
   imports: [
     BrowserModule,

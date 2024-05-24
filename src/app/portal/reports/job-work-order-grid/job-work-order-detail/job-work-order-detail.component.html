@@ -18,7 +18,7 @@
 <section class="manageServiceRequestPage">
     <div class="row">
         <div class="col-md-12">
-            <h1>Add Order</h1>
+            <h1>Add job Work Order</h1>
         </div>
     </div>
     <form *ngIf="requestForm" [formGroup]="requestForm">
@@ -63,8 +63,19 @@
                         </ng-template>
                         <ng-template matTabContent>
                             <mat-card>
-                                <app-basic-detail-of-order [requestForm]="requestForm" [lookups] = "OrderReportDetailLookups">
-                                </app-basic-detail-of-order>
+                                <app-job-work-basic-order [requestForm]="requestForm" [lookups] = "OrderReportDetailLookups">
+                                </app-job-work-basic-order>
+                            </mat-card>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Basic Details
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <mat-card>
+                                <app-job-work-product-detail [requestForm]="requestForm" [lookups] = "OrderReportDetailLookups">
+                                </app-job-work-product-detail>
                             </mat-card>
                         </ng-template>
                     </mat-tab>

@@ -264,11 +264,17 @@ export class ApiProxy {
     getOrderReport() {
       return `/admin/OrderReport`;
     },
+    getJobWorkOrderReportGrid() {
+      return `/admin/getJobWorkOrderReportGrid`;
+    },
     getUserReport() {
       return `/admin/GetUserReport`;
     },
     saveOrder() {
       return `/admin/addOrder`;
+    },
+    addJobWorkOrder() {
+      return `/admin/addJobWorkOrder`;
     },
     saveCustomer() {
       return `/admin/saveCustomer`
