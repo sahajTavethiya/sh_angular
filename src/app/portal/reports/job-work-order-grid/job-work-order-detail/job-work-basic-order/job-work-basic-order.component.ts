@@ -22,9 +22,20 @@ export class JobWorkBasicOrderComponent implements OnInit {
   MeasurementMaster : Array<any>;
   VendorMaster : Array<any>;
   requestId : number;
+  gstMaster: Array<any>;
   constructor(readonly service: OrderReportServiceService,private router: Router,readonly route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.gstMaster = [
+      {
+        DisplayText: 'Yes',
+        keyName: 1
+      },
+      {
+        DisplayText: 'No',
+        keyName: 0
+      }
+    ] ;
 
     this.bindDropdowns();
   }
@@ -51,6 +62,8 @@ export class JobWorkBasicOrderComponent implements OnInit {
       this.HSN_CodeMaster = this.lookups[this.service.constants.OrderReportCategories.HSN_Master];
       this.MeasurementMaster = this.lookups[this.service.constants.OrderReportCategories.MeasurementCategory];
       this.VendorMaster = this.lookups[this.service.constants.OrderReportCategories.VendorMaster];
+      console.log("hsn",this.HSN_CodeMaster);
+      
 
 
     }, 1000);

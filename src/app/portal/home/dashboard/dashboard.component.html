@@ -44,6 +44,130 @@
         </div>
     </div>
 
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-6 dcards">
+      <a (click)="addjobwork()">
+        <div class="col">
+          <div class="card radius-10" style="cursor: pointer;">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between ">
+                <h5 class="mb-0 text-primary"> + </h5>
+                <!-- <p class="dashIcon sbg1Color">
+                  <i class="fa fa-fw fa-list"></i>
+                </p> -->
+              </div>
+              <div class="my-2">
+                <mat-divider></mat-divider>
+              </div>
+              <div class="d-flex align-items-center">
+                <p class="mb-0">Add Job Order</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      </a>
+       <a (click)="AddManufacturer()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg2Color"> + </h5>
+                  <!-- <p class="dashIcon sbg2Color">
+                    <i class="fa fa-fw fa-external-link"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Add Manufacturer Order</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        </a>
+       <a (click)="stockReport()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg4Color"> + </h5>
+                  <!-- <p class="dashIcon sbg4Color">
+                    <i class="fa fa-fw fa-user-plus"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Stock Report</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </a>
+       <a (click)="VendorMaster()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg5Color">+</h5>
+                  <!-- <p class="dashIcon sbg5Color">
+                    <i class="fa fa-fw fa-spinner"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">All User</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </a>
+      <a (click)="ClientReport()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg8Color">+</h5>
+                  <!-- <p class="dashIcon sbg8Color">
+                    <i class="fa fa-fw fa-thumbs-up"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Active Client</p>
+                </div> 
+              </div>
+            </div>
+        </div>
+      </a>
+      <a (click)="VendorReport()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg4Color">+</h5>
+                  <!-- <p class="dashIcon sbg4Color">
+                    <i class="fas fa-times-circle"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Active Vendor</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </a> 
+
+    </div>
+
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-6 dcards">
       <a (click)="service_requests(null)">

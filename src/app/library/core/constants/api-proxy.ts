@@ -288,6 +288,11 @@ export class ApiProxy {
     getOrderListToAssignEmployee() {
       return `/manager/getOrderListToAssignEmployee`;
     },
+
+    getJobWorkOrderDetailById() {
+      return `/admin/getJobWorkOrderDetailById`;
+    },
+
     getTotalSubmitWorkDetailByOrderId() {
       return `/manager/getTotalSubmitWorkDetailByOrderId`;
     },

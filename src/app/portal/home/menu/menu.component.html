@@ -4,7 +4,12 @@
             <mat-list-item>
                 Dashboard
             </mat-list-item>
-        </a> -->
+        </a> -->.        
+        <a class="navLink" routerLink="/Homepage">
+            <mat-list-item>
+                Homepage
+            </mat-list-item>
+        </a>
         <a class="navLink" routerLink="/">
             <mat-list-item>
                 Dashbord
@@ -12,7 +17,7 @@
         </a>
         <a *ngIf="json.roleId == 1" class="navLink" routerLink="/OrderReport">
             <mat-list-item>
-                Order Report
+                Manufactur Order Report
             </mat-list-item>
         </a>
         <a *ngIf="json.roleId == 1" class="navLink" routerLink="/JobWorkOrder">

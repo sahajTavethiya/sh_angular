@@ -62,25 +62,19 @@ export class AssignTaskDetailComponent implements OnInit {
       this.initialize();
     }
     obj : any
+    
     initialize() {
       if (this.requestId) {
         console.log("its in request ID");
         let obj = {
           OrderId:this.requestId
         }
+       
         this.service.getAssignListByOrderId(obj).subscribe((response: any) => {
           if (response.status == 200 && response.data) {
-            // this.obj = {
-            //   // assignedManpowerList: response.data.assignedManpowerList,
-            //   request: response.data.request,
-            // }
-            // if (response.data.request.enquiryStatus == "21") {
-            //   response.data.request.isModifyBy = 0;
-            // }
-  let reqObj = {
-    request : response.data
-  }
-  console.log(reqObj);
+          let reqObj = {
+            request : response.data
+          }
             const requestContainer = new OrderAssignMainModel(reqObj);
             console.log("Sahaj")
             this.requestForm = this.formBuilder.formGroup(requestContainer);

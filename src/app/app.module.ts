@@ -104,6 +104,7 @@ import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-gri
 import { JobWorkBasicOrderComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-basic-order/job-work-basic-order.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { JObWorkProductDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-product-detail/job-work-product-detail.component';
+import { FourntPageComponent } from './home-page/fournt-page/fournt-page.component';
 
 @NgModule({
   declarations: [
@@ -188,6 +189,7 @@ import { JObWorkProductDetailComponent } from './portal/reports/job-work-order-g
     JobWorkBasicOrderComponent,
     HomePageComponent,
     JObWorkProductDetailComponent,
+    FourntPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,9 @@ export class AssignTaskDetailService extends BaseService {
   getAssignListByOrderId = (data: any) => this.api.post(this.apiProxy.Admin.getAssignListByOrderId(), data);
   getMaterials = () => this.api.get(this.apiProxy.ServiceRequest.getMaterials());
   assignTaskToEmployee = (data: any) => this.api.post(this.apiProxy.Admin.assignTaskToEmployee(), data);
-
+  getJobWorkOrderDetailById(reqData : any){
+    return this.api.post<Array<any>>(this.apiProxy.Common.getJobWorkOrderDetailById(),reqData)
+  }
 
 
 }

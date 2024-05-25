@@ -8,6 +8,7 @@ export class OrderAssignModel {
             this.assignToId = etl.assignToId;
             this.assignById = etl.assignById;
             this.orderId = etl.orderId;
+            this.jobWorkOrderDetailId = etl.jobWorkOrderDetailId;
             this.productId = etl.productId;
             this.assignTotalPiece = etl.assignTotalPiece;
             this.workRatePerPiece = etl.workRatePerPiece;
@@ -33,4 +34,6 @@ export class OrderAssignModel {
     workRatePerPiece: number;
     @prop()
     isDelete: number;
+    @prop()
+    jobWorkOrderDetailId: number;
 }

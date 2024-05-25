@@ -19,7 +19,7 @@ export class ProductionService extends BaseService {
     return this.api.post<Array<any>>(this.apiProxy.Common.getOrderDetailById(), ReqData)
   }
   getOrderListForAdminToAssignManager(ReqData: any) {
-    return this.api.get<Array<any>>(this.apiProxy.Common.getOrderListForAdminToAssignManager(), ReqData)
+    return this.api.post<Array<any>>(this.apiProxy.Common.getOrderListForAdminToAssignManager(), ReqData)
   }
   getOrderListToAssignEmployee(ReqData: any) {
     return this.api.post<Array<any>>(this.apiProxy.Common.getOrderListToAssignEmployee(), ReqData)

@@ -6,6 +6,7 @@ import { SubmitWorkService } from '../../submit-work.service';
 import { DailyWorkBasicDetail } from 'src/app/library/core/models/report/dailyWork/daily-work-basic-detail.model';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { ConfirmationDialogComponent } from 'src/app/library/shared/confirmation-dialog/confirmation-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-submit-work-basic-detail',
@@ -15,13 +16,22 @@ import { ConfirmationDialogComponent } from 'src/app/library/shared/confirmation
 export class SubmitWorkBasicDetailComponent implements OnInit {
   @Input() requestForm: FormGroup;
   @Input() AssignList: Array<any>;
-  constructor(readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly service: SubmitWorkService,) { }
+  orderproductData:any;
+  requestId:number;
+  constructor(readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly service: SubmitWorkService,readonly route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.requestId = parseInt(this.route.snapshot.params.id);
+    let obj = {
+      OrderId:this.requestId
+    }
+    this.service.getJobWorkOrderDetailById(obj).subscribe((response: any) => {
+      this.orderproductData = response.data.JobWorkProductData;
+    })
   }
-  addOpenSaveDailyWork() {
+  addOpenSaveDailyWork(tblId:number) {
     const dialogRef = this.dialog.open(AddSubmitWorkDetailPopupComponent, {
-      data: { AssignList: this.AssignList },
+      data: { AssignList: this.AssignList,tblId:tblId },
       width: '6000px'
     });
     dialogRef.afterClosed().subscribe(result => {

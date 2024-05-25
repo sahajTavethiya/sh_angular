@@ -128,17 +128,18 @@ export class SubmitDailyWorkComponent implements OnInit {
       // { header: 'Received by', field: 'Received by' },
       // { header: 'Vendor Name', field: 'Vendor Name' },
       // { header: 'Store Name', field: 'Store Name' },
-       { header: 'Order Id', field: 'OrderId' },
-      { header: 'Product Name', field: 'ProductName' },
-      { header: 'Client Name', field: 'ClientName' },
-      { header: 'Design Name', field: 'DesignName' },
-      { header: 'Size', field: 'Size' },
-      { header: 'Total Item', field: 'TotalItem' },
-      { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
-      { header: 'Total Amount', field: 'TotalAmount' },
+      { header: 'Order Id', field: 'OrderId' },
+      { header: 'Client Name', field: 'ClientId' },
+      // { header: 'Product Name', field: 'ProductName' },
+      // { header: 'Client Name', field: 'ClientName' },
+      // { header: 'Design Name', field: 'DesignName' },
+      // { header: 'Size', field: 'Size' },
+      // { header: 'Total Item', field: 'TotalItem' },
+      // { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
+      // { header: 'Total Amount', field: 'TotalAmount' },
       { header: 'Bill No', field: 'BillNo' },
-
-      {header:'Date',field:'Date'},
+      { header: 'Status', field: 'StatusId' },
+      {header:'Date',field:'CreatedOn'},
     ];
   }
 

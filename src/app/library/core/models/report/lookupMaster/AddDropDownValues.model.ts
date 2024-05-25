@@ -4,6 +4,7 @@ export class AddDropDownModel {
     constructor(etl?: AddDropDownModel) {
 
         if (etl) {
+            this.product = etl.product;
             this.colour = etl.colour;
             this.hsn_Code = etl.hsn_Code;
             this.percentage = etl.percentage;
@@ -11,6 +12,8 @@ export class AddDropDownModel {
             this.size = etl.size;
             }
     }
+    @prop()
+    product: string;
     @prop()
     colour: string;
     @prop()

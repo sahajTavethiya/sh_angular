@@ -1,4 +1,9 @@
 <!-- <div class="content-wrapper"> -->
+
+  <div *ngIf="isitHomepage">
+    <router-outlet></router-outlet>
+  </div>
+<div *ngIf="!isitHomepage">
 <app-loader></app-loader>
 <div class="header row">
   <div class="header-left col-md-6">
@@ -24,3 +29,4 @@
 </mat-sidenav-container>
 </div>
 <app-footer></app-footer>
+</div>

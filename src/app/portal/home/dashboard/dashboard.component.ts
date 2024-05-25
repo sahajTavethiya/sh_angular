@@ -395,8 +395,23 @@ export class DashboardComponent implements OnInit {
   }
   ClientReport(){
     this.router.navigateByUrl('/ClientReport');
-
   }
+  stockReport(){
+    this.router.navigateByUrl('/StockDetail');
+  }
+  addjobwork(){
+    this.router.navigateByUrl('/JobWorkOrderReportDetail');
+  }
+  AddManufacturer(){
+    this.router.navigateByUrl('/OrderReportDetail');
+  }
+  SellingDetail(){
+    this.router.navigateByUrl('/SellingDetail');
+  }
+  VendorMaster(){
+    this.router.navigateByUrl('/Vendor');
+  }
+  
   service_requests(statusIds:any){
     let requestFrom ='';
     let requestTo ='';

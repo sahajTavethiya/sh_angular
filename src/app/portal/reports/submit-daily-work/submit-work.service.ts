@@ -35,4 +35,7 @@ export class SubmitWorkService  extends BaseService {
   saveDailyWork(ReqData:any){
     return this.api.post<Array<any>>(this.apiProxy.Common.saveDailyWork(),ReqData)
   }
+  getJobWorkOrderDetailById(reqData : any){
+    return this.api.post<Array<any>>(this.apiProxy.Common.getJobWorkOrderDetailById(),reqData)
+  }
 }

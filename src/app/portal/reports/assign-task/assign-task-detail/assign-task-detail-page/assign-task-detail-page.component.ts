@@ -11,6 +11,8 @@ import { TaskDetailsService } from 'src/app/portal/service-request/request/task-
 import { TaskTypeComponent } from 'src/app/portal/service-request/request/task-details/task-type/task-type.component';
 import { AssignTaskDetailDialogComponent } from './assign-task-detail-dialog/assign-task-detail-dialog.component';
 import { OrderAssignModel } from 'src/app/library/core/models/report/orderAssign/order_assign.model';
+import { AssignTaskDetailService } from '../../assign-task-detail.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-assign-task-detail-page',
@@ -26,16 +28,24 @@ export class AssignTaskDetailPageComponent implements OnInit {
   Spareshowaddbutt: any = false;
   Openingaddbutt: any = true;
   ActualTaskTypeDelete: any = true;
-  constructor(readonly service: TaskDetailsService,
+  orderproductData :any
+  constructor(readonly service: AssignTaskDetailService,
+    readonly route: ActivatedRoute,
     readonly formBuilder: RxFormBuilder, readonly authService: AuthService,
     readonly dialog: MatDialog) { }
   ngOnInit(): void {
     const json = JSON.parse(localStorage.getItem('currentUser') || '{}');
-
+    this.requestId = parseInt(this.route.snapshot.params.id);
 
     if (json.roleId === 1) {
       console.log(json.roleId);
     }
+    let obj = {
+      OrderId:this.requestId
+    }
+    this.service.getJobWorkOrderDetailById(obj).subscribe((response: any) => {
+      this.orderproductData = response.data.JobWorkProductData;
+    })
 
     console.log("Request Form --", this.requestForm);
 
@@ -155,13 +165,13 @@ export class AssignTaskDetailPageComponent implements OnInit {
     });
   }
 
-  addOpenSparesConsumables() {
+  addOpenSparesConsumables(tblId : number) {
     // if (this.requestForm.controls.assignedManpowerList?.value.length != 0) {
     // const serviceId = this.requestForm.controls.request.get('serviceId')?.value;
     // const request = this.requestForm.controls.request as FormArray;
     // if (serviceId) {
     const dialogRef = this.dialog.open(AssignTaskDetailDialogComponent, {
-      data: {},
+      data: {tblId},
       // enquiryTaskLines: request 
       width: '600px'
     });

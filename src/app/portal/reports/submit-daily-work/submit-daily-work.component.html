@@ -126,7 +126,9 @@
                         <td><a target="_blank" [routerLink]="['DailyWorkDetail',rowData.OrderId]">{{ rowData.OrderId
                                 }}</a>
                         </td>
-                        <td>{{rowData.ProductName}}</td>
+                        <td>{{rowData.ClientName}}</td>
+
+                        <!-- <td>{{rowData.ProductName}}</td>
                         <td>{{rowData.Client}}</td>
                         <td>{{rowData.Design}}</td>
 
@@ -136,9 +138,10 @@
 
                         <td>{{rowData.AmountPerOneItem }}</td>
 
-                        <td>{{rowData.TotalAmount}}</td>
+                        <td>{{rowData.TotalAmount}}</td> -->
 
                         <td>{{rowData.BillNo}}</td>
+                        <td>{{rowData.Status}}</td>
                         <td>{{ rowData.CreatedOn != null ?
                             this.service.Moment(rowData.CreatedOn).format("MM-DD-YYYY"):'' }}
                         </td>

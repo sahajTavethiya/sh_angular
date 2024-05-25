@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { OrderAssignModel } from 'src/app/library/core/models/report/orderAssign/order_assign.model';
 import { OrderAssignMainModel } from 'src/app/library/core/models/report/orderAssign/order_assign_main.model';
@@ -15,7 +15,9 @@ import { RequestService } from 'src/app/portal/service-request/request/request.s
 export class AssignTaskDetailDialogComponent implements OnInit {
   dialog: any;
 
-  constructor(readonly service: RequestService, readonly formBuilder: RxFormBuilder,public dialogRef: MatDialogRef<AssignTaskDetailDialogComponent>) { }
+  constructor(readonly service: RequestService, readonly formBuilder: RxFormBuilder,public dialogRef: MatDialogRef<AssignTaskDetailDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { tblId : number }
+  ) { }
   sparesConsumablesForm: FormGroup;
   serviceSubCategories: Array<any>;
   manager: Array<any>;
@@ -64,6 +66,7 @@ export class AssignTaskDetailDialogComponent implements OnInit {
       taskType.assignById = json.id;
       taskType.tblId = 0;
       taskType.isDelete = 0;
+      taskType.jobWorkOrderDetailId = this.data.tblId;
       this.dialogRef.close(taskType);
     }
 

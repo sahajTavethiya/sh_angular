@@ -63,7 +63,7 @@ export class SellProductDetailComponent implements OnInit {
         DisplayText: 'No',
         keyName: 0
       }
-    ]
+    ] ;
     this.ShowAddDataField = [
       {
         billNo: '',

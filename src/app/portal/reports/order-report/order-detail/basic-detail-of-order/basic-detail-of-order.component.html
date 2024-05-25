@@ -1,6 +1,6 @@
 <mat-card-content *ngIf="RequestDetail && requestForm" [formGroup]="RequestDetail" class="formWrap"
     style="margin-bottom: 170px;">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Work Type :</label>
@@ -10,45 +10,37 @@
                 </p-dropdown>
             </div>
         </div>
-    </div>
+    </div> -->
     <div *ngIf="selectedWorkType == 1">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <!-- <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Client : </label>
                     <p-dropdown [options]="ClietMaster" class="ui-input" optionValue="KeyName"
                         formControlName="ClientId" optionLabel="DisplayText" placeholder="-Select-">
                     </p-dropdown>
-
-                    <!-- <p-dropdown [options]="serviceNames" class="ui-input" optionValue="keyName" formControlName="serviceId" optionLabel="displayText" placeholder="-Select-">
-                </p-dropdown> -->
                 </div>
-            </div>
-            <div class="col-12 col-md-4">
+            </div> -->
+            <!-- <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Product : </label>
                     <p-dropdown [options]="ProductMaster" class="ui-input" optionValue="KeyName"
                         formControlName="ProductId" optionLabel="DisplayText" placeholder="-Select-">
                     </p-dropdown>
-
-                    <!-- <p-dropdown [options]="serviceNames" class="ui-input" optionValue="keyName" formControlName="serviceId" optionLabel="displayText" placeholder="-Select-">
-                </p-dropdown> -->
                 </div>
-            </div>
-            <div class="col-12 col-md-4">
+            </div> -->
+            <!-- <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>Size : </label>
                     <p-dropdown [options]="SizeMaster" class="ui-input" optionValue="KeyName" formControlName="SizeId"
                         optionLabel="DisplayText" placeholder="-Select-" [filter]="true">
                     </p-dropdown>
-                    <!-- <p-dropdown [options]="serviceNames" class="ui-input" optionValue="keyName" formControlName="serviceId" optionLabel="displayText" placeholder="-Select-">
-                </p-dropdown> -->
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
-    <div *ngIf="selectedWorkType == 1">
+    <!-- <div *ngIf="selectedWorkType == 1">
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="form-group">
@@ -71,8 +63,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div *ngIf="selectedWorkType == 1">
+    </div> -->
+    <div>
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="form-group">
@@ -88,17 +80,17 @@
                     </p-dropdown>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            <!-- <div class="col-12 col-md-4">
                 <div class="form-group">
                     <label>HSN Code :</label>
                     <p-dropdown [options]="HSN_CodeMaster" class="ui-input" optionValue="KeyName"
                         formControlName="HSN_Code" optionLabel="DisplayText" placeholder="-Select-">
                     </p-dropdown>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-    <div class="row" *ngIf="selectedWorkType == 2">
+    <div class="row">
         <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Vendor</label>
@@ -107,12 +99,12 @@
                 </p-dropdown>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <!-- <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Bill <span class="mandatoryField">*</span></label>
                 <input pInputText class="form-control" formControlName="BillNo">
             </div>
-        </div>
+        </div> -->
         <div class="col-12 col-md-4">
             <div class="form-group">
                 <label>Total Item<span class="mandatoryField">*</span></label>
@@ -120,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="selectedWorkType == 2">
+    <div class="row">
 
         <div class="col-12 col-md-4">
             <div class="form-group">

@@ -59,12 +59,10 @@ export class AssignTaskComponent implements OnInit {
   searchObject: any = {} // for exel 
   cols = [
     { header: 'Order Id', field: 'OrderId' },
-    { header: 'Product Name', field: 'ProductName' },
-    { header: 'Size', field: 'Size' },
-    { header: 'Total Item', field: 'TotalItem' },
-    { header: 'Client Name', field: 'Client' },
-    { header: 'Design Name', field: 'Design' },
-    { header: 'CreatedOn', field: 'CreatedOn' }
+    { header: 'BillNo', field: 'Bill-No' },
+    { header: 'Client Name', field: 'ClientName' }, 
+    { header: 'CreatedOn', field: 'CreatedOn' },
+    { header: 'Status', field: 'Status' }
   ]
 
   Material_Details: any = []
@@ -123,12 +121,11 @@ export class AssignTaskComponent implements OnInit {
   bindColumns() {
     this.cols = [
       { header: 'Order Id', field: 'OrderId' },
-      { header: 'Product Name', field: 'ProductName' },
-      { header: 'Size', field: 'Size' },
-      { header: 'Total Item', field: 'TotalItem' },
-      { header: 'Client Name', field: 'Client' },
-      { header: 'Design Name', field: 'Design' },
-      { header: 'CreatedOn', field: 'CreatedOn' }
+      { header: 'BillNo', field: 'Bill-No' },
+      { header: 'Client Name', field: 'ClientName' },
+      { header: 'Status', field: 'Status' },
+      
+      { header: 'CreatedOn', field: 'CreatedOn' },
     ];
   }
 

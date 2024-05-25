@@ -53,13 +53,19 @@ import { TransactionMasterGridComponent } from './portal/reports/transation-mast
 import { TransactionMasterAddComponent } from './portal/reports/transation-master/transaction-master-add/transaction-master-add.component';
 import { JobWorkOrderGridComponent } from './portal/reports/job-work-order-grid/job-work-order-grid.component';
 import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-order-detail.component';
+import { FourntPageComponent } from './home-page/fournt-page/fournt-page.component';
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: DashboardComponent
+    component: FourntPageComponent
   },
+  // {
+  //   path: '',
+  //   canActivate: [AuthGuard],
+  //   component: DashboardComponent
+  // },
   {
     path: 'meter-master',
     canActivate: [AuthGuard],
@@ -99,7 +105,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: JobWorkOrderDetailComponent
   }, {
-    path: 'OrderReport/JobWorkOrderReportDetail/:id',
+    path: 'JobWorkOrder/JobWorkOrderReportDetail/:id',
     canActivate: [AuthGuard],
     component: JobWorkOrderDetailComponent
   },

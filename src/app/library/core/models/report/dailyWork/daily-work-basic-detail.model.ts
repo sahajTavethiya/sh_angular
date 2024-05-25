@@ -4,6 +4,7 @@ export class DailyWorkBasicDetail {
     constructor(etl?: DailyWorkBasicDetail) {
         if (etl) {
             this.tblId = etl.tblId;
+            this.jobWorkOrderDetailId = etl.jobWorkOrderDetailId;
             this.assignTaskMasterId = etl.assignTaskMasterId;
             this.userId = etl.userId;
             this.completePiece = etl.completePiece;
@@ -38,4 +39,6 @@ export class DailyWorkBasicDetail {
     noOfPiece : number
     @prop()
     isDelete : number;
+    @prop()
+    jobWorkOrderDetailId : number;
 }

@@ -109,7 +109,7 @@ export class MenuComponent implements OnInit {
           // { displayName: 'Contractor Reconciliation Report', matIcon: 'list', url: '/ContractorReconciliation' ,type:1},
           // { displayName: 'Daily Progress Report', matIcon: 'list', url: '/DailyProgressReport' ,type:1},
 
-          { displayName: 'Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
+          { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
           { displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 },
           { displayName: 'Worker Report', matIcon: 'list', url: '/WorkerReport', type: 1 },
           { displayName: 'Stock Report', matIcon: 'list', url: '/StockReport', type: 1 },

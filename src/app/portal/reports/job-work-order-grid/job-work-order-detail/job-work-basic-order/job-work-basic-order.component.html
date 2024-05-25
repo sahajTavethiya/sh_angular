@@ -34,6 +34,23 @@
                 </p-dropdown> -->
         </div>
       </div>
+      <div class="col-3 px-2">
+        <label>Select GST: </label>
+        <p-dropdown
+        appendTo="body"
+        [filter]="true"
+        filterBy="DisplayText"
+        [options]="gstMaster"
+        class="ui-input"
+        [required]="true"
+        formControlName="isGst"
+        optionLabel="DisplayText"
+        optionValue="keyName"
+        placeholder="-Select-"
+      >
+      </p-dropdown>
+      </div>
+
       <!-- <div class="col-4">
                 <div class="form-group">
                     <label>Product : </label>
@@ -105,7 +122,7 @@
           <p-dropdown
             [options]="HSN_CodeMaster"
             class="ui-input"
-            optionValue="KeyName"
+            optionValue="keyName"
             formControlName="HSN_Code"
             optionLabel="DisplayText"
             placeholder="-Select-"
