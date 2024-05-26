@@ -305,6 +305,23 @@ export class ApiProxy {
     getProductionDataFromOrderId() {
       return `/manager/getProductionDataFromOrderId`;
     },
+    SaveRolePermissions: () => {
+      return `/common/SaveRolePermissions`
+  },
+  
+  GetRoleListForGrid: () => {
+    return `/common/getRoleListForGrid`
+},
+GetRolePermissions: () => {
+  return '/common/GetRolePermissions'
+},
+GetMaterialCategoryListForGrid: () => {
+  return `/Material/GetMaterialCategoryListForGrid`
+},
+GetRoleDetailById: (id: any) => {
+  return `/common/GetRoleDetailById?RoleId=${id}`
+},
+
   };
   Admin = {
     saveClient() {

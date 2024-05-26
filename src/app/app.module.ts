@@ -105,6 +105,8 @@ import { JobWorkBasicOrderComponent } from './portal/reports/job-work-order-grid
 import { HomePageComponent } from './home-page/home-page.component';
 import { JObWorkProductDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-product-detail/job-work-product-detail.component';
 import { FourntPageComponent } from './home-page/fournt-page/fournt-page.component';
+import { UserMasterRoleGridComponent } from './portal/reports/user-master-role-grid/user-master-role-grid.component';
+import { UserMasterRoleAddComponent } from './portal/reports/user-master-role-grid/user-master-role-add/user-master-role-add.component';
 
 @NgModule({
   declarations: [
@@ -190,6 +192,8 @@ import { FourntPageComponent } from './home-page/fournt-page/fournt-page.compone
     HomePageComponent,
     JObWorkProductDetailComponent,
     FourntPageComponent,
+    UserMasterRoleGridComponent,
+    UserMasterRoleAddComponent,
   ],
   imports: [
     BrowserModule,

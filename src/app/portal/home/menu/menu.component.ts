@@ -87,49 +87,32 @@ export class MenuComponent implements OnInit {
       //     { displayName: 'View Manpower Location Details', matIcon: 'list', url: this.getLink('MANPOWERLOCATIONREPORTDETAIL'), type: 0 }
       //   ]
       // },
+      // {
+      //   displayName: '', matIcon: 'dashboard',
+      //   children: [
+      //     { displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 },
+      //     { displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 },
+      //     { displayName: 'Assign Task', matIcon: 'list', url: '/AssignTask', type: 1 },
+      //     { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 },
+      //   ]
+      // },
       {
-        displayName: 'Reports', matIcon: 'dashboard',
+        displayName: 'Job Work', matIcon: 'dashboard',
         children: [
-          // { displayName: 'Helpdesk SR1', matIcon: 'list', url: '/helpdesk-sr1' ,type:1},
-          // { displayName: 'Attendance Report', matIcon: 'list', url: '/ManpowerAttendanceReport' ,type:1},
-          // { displayName: 'DPR-NG Conversion', matIcon: 'list', url: '/NG-Tracking-Report' ,type:1},
-          // { displayName: 'DPR-RFC Tracker', matIcon: 'list', url: '/RFC-Tracking-Report' ,type:1},
-          // { displayName: 'PE Tracker Report', matIcon: 'list', url: '/pe-tracker-report' ,type:1},
-          // { displayName: 'Call Center Report', matIcon: 'list', url: '/CallCenterReport' ,type:1},//
-          // { displayName: 'Ticket Closure Report', matIcon: 'list', url: '/TicketclosureReport' ,type:1},
-          // { displayName: 'Manpower Performance Report', matIcon: 'list', url: '/ManpowerPerformanceReport',type:1 },
-          // { displayName: 'Billing Report', matIcon: 'list', url: '/BillingReport' ,type:1},
-          // { displayName: 'Incomplete SR Status Report', matIcon: 'list', url: '/IncompleteSRStatusReport' ,type:1},//panding
-          // { displayName: 'TAT Report', matIcon: 'list', url: '/TATReport' ,type:1},
-          // { displayName: 'Project Report', matIcon: 'list', url: '/ProjectReport' ,type:1},
-          // { displayName: 'Material Receipt Report', matIcon: 'list', url: '/MaterialReport' ,type:1},
-          // { displayName: 'Material Issue', matIcon: 'list', url: '/MaterialIssue' ,type:1},
-          // { displayName: 'Consumption Report', matIcon: 'list', url: '/ConsumptionReport' ,type:1},
-          // { displayName: 'Stock Report', matIcon: 'list', url: '/StockReport' ,type:1},
-          // { displayName: 'Contractor Reconciliation Report', matIcon: 'list', url: '/ContractorReconciliation' ,type:1},
-          // { displayName: 'Daily Progress Report', matIcon: 'list', url: '/DailyProgressReport' ,type:1},
-
-          { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
+          { displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 },
           { displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 },
-          { displayName: 'Worker Report', matIcon: 'list', url: '/WorkerReport', type: 1 },
-          { displayName: 'Stock Report', matIcon: 'list', url: '/StockReport', type: 1 },
-          { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 },
           { displayName: 'Assign Task', matIcon: 'list', url: '/AssignTask', type: 1 },
+          { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 }
+        ]
+      },
+      {
+        displayName: 'Manufactur', matIcon: 'dashboard',
+        children: [
+          { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
+          { displayName: 'Vendor Masters', matIcon: 'list', url: '/Vendor', type: 1 },
+          { displayName: 'Customer Masters', matIcon: 'list', url: '/Customer', type: 1 },
           { displayName: 'Production Report', matIcon: 'list', url: '/ProductionReport', type: 1 },
           { displayName: 'Sell Report', matIcon: 'list', url: '/Selling', type: 1 },
-          { displayName: 'Masters', matIcon: 'list', url: '/AddMasters', type: 1 },
-          //  { displayName: 'ZOHO', matIcon: 'list', url: '/zoho' ,type:1},
-
-          // { displayName: 'Helpdesk SR1', matIcon: 'list', url: this.getLink('HELPDESKSR') ,type:0},
-          // { displayName: 'Attendance Report', matIcon: 'list', url: this.getLink('MANPOWERATTENDANCEREPORT') ,type:0},
-          // { displayName: 'DPR-NG Conversion', matIcon: 'list', url: this.getLink('COMPLETESERVICEREQUEST') ,type:0},
-          // { displayName: 'DPR-RFC Tracker', matIcon: 'list', url: this.getLink('RFCCOMPLETESERVICEREQUEST') ,type:0},
-          // { displayName: 'Call Center Report', matIcon: 'list', url: this.getLink('CALLCENTERREPORT') ,type:0},
-          // { displayName: 'Ticket Closure Report', matIcon: 'list', url: this.getLink('TICKETCLOSUREREPORT') ,type:0},
-          // { displayName: 'Manpower Performance Report', matIcon: 'list', url: this.getLink('MANPOWERPERFORMANCEREPORT'),type:0 },
-          // { displayName: 'Billing Report', matIcon: 'list', url: this.getLink('BILLINGREPORT') ,type:0},
-          // { displayName: 'Incomplete SR Status Report', matIcon: 'list', url: this.getLink('INCOMPLETESRSTATUSREPORT') ,type:0},
-          // { displayName: 'TAT Report', matIcon: 'list', url: this.getLink('TATREPORT') ,type:0}
         ]
       }
     ];

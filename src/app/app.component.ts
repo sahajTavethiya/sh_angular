@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/library/shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent {
   title = 'Elev9App';
   userName = '';
-  isitHomepage = true
+  isitHomepage = false;
+  @ViewChild('snav') snav: MatSidenav;
   constructor(readonly authService: AuthService,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const json = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    
+
     this.router.events.subscribe((event: any) => {
       if (event.constructor.name === "NavigationEnd") {
         if(this.router.url == '/'){
@@ -32,5 +34,6 @@ export class AppComponent {
     } else {
       this.userName = '';
     }
+    console.log("its home page",this.isitHomepage)
   }
 }

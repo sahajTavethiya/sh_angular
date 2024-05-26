@@ -5,12 +5,12 @@
                 Dashboard
             </mat-list-item>
         </a> -->.        
-        <a class="navLink" routerLink="/Homepage">
+        <!-- <a class="navLink" routerLink="/Homepage">
             <mat-list-item>
                 Homepage
             </mat-list-item>
         </a>
-        <a class="navLink" routerLink="/">
+        <a class="navLink" routerLink="/Dashbord">
             <mat-list-item>
                 Dashbord
             </mat-list-item>
@@ -30,11 +30,7 @@
                 Worker Report
             </mat-list-item>
         </a>
-        <a class="navLink" routerLink="/StockReport">
-            <mat-list-item>
-                Stock Report
-            </mat-list-item>
-        </a>
+       
         <a class="navLink" routerLink="/DailyWork">
             <mat-list-item>
                 Daily Work Report
@@ -55,11 +51,7 @@
                 Selling Report
             </mat-list-item>
         </a>
-        <a class="navLink" routerLink="/AddMasters">
-            <mat-list-item>
-                Add Masters
-            </mat-list-item>
-        </a>
+       
         <a class="navLink" routerLink="/Vendor">
             <mat-list-item>
                 Vendor Masters
@@ -70,20 +62,21 @@
                 Customer Masters
             </mat-list-item>
         </a>
-        <a class="navLink" routerLink="/Transaction">
-            <mat-list-item>
-                Transaction Master
-            </mat-list-item>
-        </a>
+
         <a class="navLink" routerLink="/ClientReport">
             <mat-list-item>
                 Client Master
             </mat-list-item>
-        </a>
+        </a> -->
         <!-- <a class="navLink" href="{{DASHBOARD}}" target="_blank">
             Dashboard
         </a> -->
-    <!-- <mat-accordion>
+        <a class="navLink" routerLink="/Dashboard">
+            <mat-list-item>
+                Dashboard
+            </mat-list-item>
+        </a>
+    <mat-accordion>
         <mat-expansion-panel *ngFor="let menu of menus">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -110,5 +103,30 @@
             </div>
             
         </mat-expansion-panel>
-    </mat-accordion> -->
+    </mat-accordion>
+    <a class="navLink" routerLink="/WorkerReport">
+        <mat-list-item>
+            Worker Report
+        </mat-list-item>
+    </a>
+    <a class="navLink" routerLink="/StockReport">
+        <mat-list-item>
+            Stock Report
+        </mat-list-item>
+    </a>
+    <a class="navLink" routerLink="/AddMasters">
+        <mat-list-item>
+            Add Masters
+        </mat-list-item>
+    </a>
+    <a class="navLink" routerLink="/Transaction">
+        <mat-list-item>
+            Transaction Master
+        </mat-list-item>
+    </a>
+    <a class="navLink" routerLink="/userRoleMaster">
+        <mat-list-item>
+            Role Master
+        </mat-list-item>
+    </a>
 </mat-nav-list>

@@ -1,0 +1,123 @@
+<section class="manageServiceRequestPage">
+    <div *ngIf="addHeader" class="row">
+        <div class="col-md-8">
+            <h1>Add New Role</h1>
+        </div>
+    </div>
+    <div *ngIf="editHeader" class="row">
+        <div class="col-md-8">
+            <h1>Edit Role</h1>
+        </div>
+    </div>
+    <mat-card-content class="formWrap" *ngIf="requestForm" [formGroup]="requestForm">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-group">
+                    <label>Role Name* : </label>
+                    <input type="text" class="form-control" formControlName="roleName" placeholder="Role Name">
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-group">
+                    <label>Role Description* : </label>
+                    <textarea type="input" placeholder="Max 500 characters" class="form-control"
+                        formControlName="roleDescription" maxlength="500"></textarea>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="userMasterDelete" class="row">
+            <div  class="col-12 col-md-4">
+                <div class="form-group">
+                    <label >Status : </label>
+                    <p-dropdown [options]="StatusArr" class="ui-input" optionValue="KeyName" formControlName="status"
+                        optionLabel="DisplayText" placeholder="-Select-">
+                    </p-dropdown>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-hover align-items-center w-75" >
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 40%;">Masters</th>
+                        <th style="width: 10%;">Full Access</th>
+                        <th style="width: 10%;">View</th>
+                        <th style="width: 10%;">Insert</th>
+                        <th style="width: 10%;">Update</th>
+                        <th style="width: 10%;">Delete</th>
+                        <th style="width: 10%;">Approve</th>
+                        <!-- <th style="width: 10%;">Approve</th> -->
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rowData of rolePermissionById">
+                        <td>{{rowData.displayText}}</td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.fullAccess"
+                                    (change)="checkBoxChange($event, rowData, 1)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canView"
+                                    (change)="checkBoxChange($event, rowData, 2)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canInsert"
+                                    (change)="checkBoxChange($event, rowData, 3)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canUpdate"
+                                    (change)="checkBoxChange($event, rowData, 4)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canDelete"
+                                    (change)="checkBoxChange($event, rowData, 5)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canApprove"
+                                    (change)="checkBoxChange($event, rowData, 6)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <!-- <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" [checked]="rowData.canApprove"
+                                    (change)="checkBoxChange($event, rowData, 7)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-card-content>
+    <div class="row">
+        <div class="col-12">
+            <div class=" mt-4">
+                <button mat-button color="secondary" type="button" (click)="onCancel();">Cancel</button><span
+                    style="padding-right:10px ;"></span>
+                <button *ngIf="saveButton" mat-button color="primary" type="submit" (click)="onSave();">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

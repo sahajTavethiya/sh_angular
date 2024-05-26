@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const json = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    console.log("Its login Component",json)
     if(json?.id){
-       this.router.navigate(['/']);
+       this.router.navigate(['/Dashboard']);
       //let url = this.oldUrl+"/Account/LoginApp?page=DASHBOARD&token="+this.authService.currentUserValue.token;
 
       //window.open(url,"_self");
@@ -91,7 +92,7 @@ export class LoginComponent implements OnInit {
            //let url = this.oldUrl+"/Account/LoginApp?page=DASHBOARD&token="+this.authService.currentUserValue.token;
 
             //window.open(url,"_self");
-             this.router.navigate(['/']);
+             this.router.navigate(['/Dashboard']);
           //  window.location.reload();
           console.log("loginData",data)
           },

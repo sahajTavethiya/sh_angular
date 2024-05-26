@@ -1,4 +1,4 @@
-<section class="manageServiceRequestPage " [formGroup]="requestForm">
+<section class="manageServiceRequestPage " [formGroup]="requestForm" style="padding-top: 50px;">
   <!-- *ngIf="requestForm" -->
   <div class="row">
     <div class="col-md-12">
@@ -53,7 +53,7 @@
 
         <mat-card-content *ngIf="requestForm" [formGroup]="requestForm" style="height: auto;">
           <div class="row">
-            <div class="col-3" style="padding-bottom: 20px">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px">
               <label class="padding">Money Source : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
@@ -67,7 +67,7 @@
               </p-dropdown>
             </div>
             
-            <div class="col-3" style="padding-bottom: 20px" >
+            <div class="col-12 col-md-4" style="padding-bottom: 20px" >
               <label class="padding">Transaction Type : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
@@ -81,12 +81,12 @@
               >
               </p-dropdown>
             </div>
-            <div class="col-3" style="padding-bottom: 20px">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px">
               <label class="padding">Transaction For : </label>
               <p-dropdown
                 [options]="TransactionForArr"
                 class="ui-input"
-                optionValue="keyName"
+                optionValue="KeyName"
                 formControlName="transactionForId"
                 optionLabel="DisplayText"
                 placeholder="-Select-"
@@ -94,7 +94,7 @@
               >
               </p-dropdown>
             </div>
-            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 1 && requestForm.get('transactionTypeId')?.value == 1">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 1 && requestForm.get('transactionTypeId')?.value == 1">
               <label class="padding">PaymentBy : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
@@ -107,7 +107,7 @@
               >
               </p-dropdown>
             </div>
-            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 5 && requestForm.get('transactionTypeId')?.value == 2">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 5 && requestForm.get('transactionTypeId')?.value == 2">
               <label class="padding">PaymentBy : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
@@ -120,7 +120,7 @@
               >
               </p-dropdown>
             </div>
-            <div class="col-3" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 6 && requestForm.get('transactionTypeId')?.value == 2">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 6 && requestForm.get('transactionTypeId')?.value == 2">
               <label class="padding">PaymentBy : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
@@ -135,11 +135,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-3" style="padding-bottom: 20px">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px">
               <label class="padding">Amount : </label>
               <input type="number" formControlName="amount" class="form-control"/>
             </div>
-            <div class="col-3" style="padding-bottom: 20px">
+            <div class="col-12 col-md-4" style="padding-bottom: 20px">
               <label class="padding"> Note: </label>
               <input type="text" formControlName="note" class="form-control"/>
             </div>

@@ -1,10 +1,10 @@
 <!-- <div class="content-wrapper"> -->
 
-  <div *ngIf="isitHomepage">
+  <!-- <div *ngIf="isitHomepage">
     <router-outlet></router-outlet>
   </div>
-<div *ngIf="!isitHomepage">
-<app-loader></app-loader>
+<div *ngIf="!isitHomepage"> -->
+<!-- <app-loader></app-loader>
 <div class="header row">
   <div class="header-left col-md-6">
     <button mat-icon-button (click)="snav.toggle()" *ngIf="userName">
@@ -28,5 +28,36 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 </div>
-<app-footer></app-footer>
+<app-footer></app-footer> -->
+<!-- </div> -->
+<app-loader></app-loader>
+<div *ngIf="isitHomepage; else otherRoutesHeader">
+  <router-outlet></router-outlet>
 </div>
+<ng-template #otherRoutesHeader>
+  <div class="header row">
+    <div class="header-left col-md-6">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="userName">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/images/logo.png" title="Logo" class="brand-logo" height="48">
+    </div>
+    <div class="col-md-6">
+      <app-header></app-header>
+    </div>
+  </div>
+  <div class="midArea" *ngIf="!isitHomepage">
+    <mat-sidenav-container class="example-sidenav-container">
+      <mat-sidenav #snav mode='over' fixedTopGap="56">
+        <app-menu></app-menu>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="midContainer">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  <app-footer *ngIf="!isitHomepage"></app-footer>
+</ng-template>
+

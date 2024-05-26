@@ -63,7 +63,8 @@ export class Constants {
     CustomerMaster : "CustomerMaster",
     DebitAmountTypeMaster : "DebitAmountTypeMaster",
     UserMaster : "UserMaster",
-    VendorMaster : "VendorMaster" 
+    VendorMaster : "VendorMaster",
+    MasterResource: 'MasterResource',
   }
 
   ServiceStages = {

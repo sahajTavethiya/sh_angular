@@ -35,11 +35,11 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    let url = this.oldUrl+"/Account/LogOutApp";
-    console.log(url);
-    window.open(url,"_self");
+    // let url = this.oldUrl+"/Account/LogOutApp";
+    // console.log(url);
+    // window.open(url,"_self");
     // window.location.reload();
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
   changePassword(){
       const dialogRef = this.dialog.open(ChangePasswordComponent, {

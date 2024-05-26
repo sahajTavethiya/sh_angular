@@ -54,18 +54,19 @@ import { TransactionMasterAddComponent } from './portal/reports/transation-maste
 import { JobWorkOrderGridComponent } from './portal/reports/job-work-order-grid/job-work-order-grid.component';
 import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-grid/job-work-order-detail/job-work-order-detail.component';
 import { FourntPageComponent } from './home-page/fournt-page/fournt-page.component';
+import { UserMasterRoleGridComponent } from './portal/reports/user-master-role-grid/user-master-role-grid.component';
+import { UserMasterRoleAddComponent } from './portal/reports/user-master-role-grid/user-master-role-add/user-master-role-add.component';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
     component: FourntPageComponent
   },
-  // {
-  //   path: '',
-  //   canActivate: [AuthGuard],
-  //   component: DashboardComponent
-  // },
+  {
+    path: 'Dashboard',
+    canActivate: [AuthGuard],
+    component: DashboardComponent
+  },
   {
     path: 'meter-master',
     canActivate: [AuthGuard],
@@ -123,6 +124,21 @@ const routes: Routes = [
     path: 'DailyWork/DailyWorkDetail/:id',
     canActivate: [AuthGuard],
     component: SubmitWorkDetailPageComponent
+  },
+  {
+    path: 'userRoleMaster',
+    canActivate: [AuthGuard],
+    component: UserMasterRoleGridComponent,
+  },
+  {
+    path: 'EditRoleMaster/:id',
+    canActivate: [AuthGuard],
+    component: UserMasterRoleAddComponent,
+  },
+  {
+    path: 'addUserRoleMaster',
+    canActivate: [AuthGuard],
+    component: UserMasterRoleAddComponent,
   },
   {
     path: 'Selling',

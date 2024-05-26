@@ -1,6 +1,6 @@
 <mat-card-content *ngIf="RequestDetail" [formGroup]="RequestDetail" style="height: 250px;" class="formWrap">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4 pb-3">
             <div class="form-group">
                 <label>Stock Item :</label>
                 <!-- <input type="text" formControlName="billNo"> -->
@@ -9,13 +9,13 @@
                 </p-dropdown>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 pb-3">
             <div class="form-group">
                 <label>No Of Items : </label>
                 <input pInputText class="form-control" formControlName="NoOfItem"/>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 pb-3">
             <div class="form-group">
                 <label>Rate : </label>
                 <input pInputText class="form-control" formControlName="Rate"/>

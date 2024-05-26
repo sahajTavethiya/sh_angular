@@ -51,10 +51,10 @@
                       Pieces
                       <p-sortIcon field="endTime"></p-sortIcon>
                     </th>
-                    <th id="header" pSortableColumn="endTime">
+                    <!-- <th id="header" pSortableColumn="endTime">
                       Rate
                       <p-sortIcon field="endTime"></p-sortIcon>
-                    </th>
+                    </th> -->
                     <th id="header" pSortableColumn="endTime">
                          Save Work
                         <p-sortIcon field="endTime"></p-sortIcon>
@@ -70,7 +70,7 @@
                     <td>{{ rowData.colourName || "N/A" }}</td>
                     <!-- <td>{{ rowData.hsnCode || "N/A" }}</td> -->
                     <td>{{ rowData.qty || "N/A" }}</td>
-                    <td>{{ rowData.rate || "N/A" }}</td>
+                    <!-- <td>{{ rowData.rate || "N/A" }}</td> -->
                       <p-button label="Add" icon="pi pi-plus" iconPos="left" (onClick)="addOpenSaveDailyWork(rowData.TblId)">
                     </p-button>
           
@@ -136,7 +136,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-ri="rowIndex">
                 <!--  -->
-                <tr *ngIf="!rowData.isDeleted">
+                <tr *ngIf="!rowData.isDelete">
                   <td>{{ rowData.jobWorkOrderDetailId }}</td>
                     <td>{{ rowData.employeeName }}</td>
                     <td>{{ rowData.completePiece }}</td>
