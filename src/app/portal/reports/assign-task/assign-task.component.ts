@@ -54,7 +54,7 @@ export class AssignTaskComponent implements OnInit {
   textsearch: any = '';
   isAllSelect: boolean = false;
   dashboardSearch: any;
-
+  
 
   searchObject: any = {} // for exel 
   cols = [
@@ -71,6 +71,7 @@ export class AssignTaskComponent implements OnInit {
     // this.initialize();
     this.bindColumns();
     this.bindDropdowns();
+
     // this.service.GetAllEmployees().subscribe((response: any) => {
     //   console.log(response); 
     //   this.employeeList = response.data;

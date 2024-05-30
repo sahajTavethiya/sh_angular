@@ -56,6 +56,8 @@ import { JobWorkOrderDetailComponent } from './portal/reports/job-work-order-gri
 import { FourntPageComponent } from './home-page/fournt-page/fournt-page.component';
 import { UserMasterRoleGridComponent } from './portal/reports/user-master-role-grid/user-master-role-grid.component';
 import { UserMasterRoleAddComponent } from './portal/reports/user-master-role-grid/user-master-role-add/user-master-role-add.component';
+import { GetMoneyFromGridComponent } from './portal/reports/get-money-from-grid/get-money-from-grid.component';
+import { GiveMoneyToGridComponent } from './portal/reports/give-money-to-grid/give-money-to-grid.component';
 
 const routes: Routes = [
   {
@@ -88,6 +90,16 @@ const routes: Routes = [
     component: RFCTrackingReportComponent
   },
   {
+    path: 'GetMoneyFrom',
+    canActivate: [AuthGuard],
+    component: GetMoneyFromGridComponent
+  },
+  {
+    path: 'PayMoneyTo',
+    canActivate: [AuthGuard],
+    component: GiveMoneyToGridComponent
+  },
+  {
     path: 'OrderReport',
     canActivate: [AuthGuard],
     component: OrderReportComponent
@@ -97,7 +109,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: OrderDetailComponent
   }, {
-    path: 'JobWorkOrder/OrderReportDetail/:id',
+    path: 'OrderReport/OrderReportDetail/:id',
     canActivate: [AuthGuard],
     component: OrderDetailComponent
   },

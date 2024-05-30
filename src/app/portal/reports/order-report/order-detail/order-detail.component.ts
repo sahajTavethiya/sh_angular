@@ -18,6 +18,7 @@ export class OrderDetailComponent implements OnInit {
   requestId: number;
   IsAddOrderForm = false;
   OrderReportDetailLookups: any;
+  showSubmitButton = false;
   constructor(readonly service: OrderReportServiceService,
     readonly route: ActivatedRoute,
     readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly authService: AuthService,
@@ -26,6 +27,11 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.requestId = this.route.snapshot.params.id;
     this.bindDropdowns();
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
+
+     this.showSubmitButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.ManufactureOrderReport)?.canUpdate;
+   })
   }
 
   bindDropdowns() {

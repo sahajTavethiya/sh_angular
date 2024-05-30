@@ -87,7 +87,7 @@
                             <!-- [disabled]="requestForm.disabled" -->
                             <button mat-button color="secondary" type="button" (click)="onCancel();">Cancel</button>
                             <!-- [disabled]="requestForm.disabled" -->
-                            <button mat-button color="primary" type="submit" (click)="onSave();">Submit</button>
+                            <button *ngIf="showSubmitButton" mat-button color="primary" type="submit" (click)="onSave();">Submit</button>
                         </div>
                     </div>
                 </div>

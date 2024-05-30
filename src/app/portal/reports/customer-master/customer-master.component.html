@@ -108,7 +108,7 @@
 
                 <p-button class="cust-button" (click)="showBasicDialog()" matTooltip="Search" icon="pi pi-search">
                 </p-button>
-                <p-button class="cust-button-primary" (click)="addOrder()" matTooltip="Add Customer" icon="pi pi-plus">
+                <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Customer" icon="pi pi-plus">
                 </p-button>
             </div>
         </div>
@@ -136,8 +136,9 @@
                 <ng-template pTemplate="body" let-rowData let-ri="rowIndex">
                     <tr class="searchTr">
 
-                        <td><a target="_blank" [routerLink]="['ProdutionReportDetail',rowData.Id]">{{ rowData.Id}}</a>
-                        </td>
+                        <!-- <td><a target="_blank" [routerLink]="['ProdutionReportDetail',rowData.Id]">{{ rowData.Id}}</a>
+                        </td> -->
+                        <td>{{rowData.Id}}</td>
                         <td>{{rowData.Name}}</td>
                         <td>{{rowData.EmailId}}</td>
                         <td>{{rowData.GST }}</td>

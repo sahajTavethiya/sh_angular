@@ -113,7 +113,7 @@
 
                 <p-button class="cust-button" (click)="showBasicDialog()" matTooltip="Search" icon="pi pi-search">
                 </p-button>
-                <p-button class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
+                <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
                 </p-button>
             </div>
         </div>
@@ -141,27 +141,16 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-ri="rowIndex">
                     <tr class="searchTr">
-
                         <td><a target="_blank" [routerLink]="['JobWorkOrderReportDetail',rowData.OrderId]">{{ rowData.OrderId
                                 }}</a>
                         </td>
-                        <!-- <td>{{rowData.WorkType}}</td> -->
-                        <!-- <td>{{rowData.ProductName}}</td> -->
                         <td>{{rowData.ClientName}}</td>
-                        <!-- <td>{{rowData.DesignName}}</td> -->
-                        <!-- <td>{{rowData.Size}}</td>; -->
-                        <!-- <td>{{rowData.TotalItem || rowData.qty}}</td> -->
-                        <!-- <td>{{rowData.AmountPerOneItem }}</td> -->
-                        <!-- <td>{{rowData.TotalAmount }}</td> -->
                         <td>{{rowData.BillNo}}</td>
-                        <!-- <td>{{rowData.UOM}}</td> -->
-                        <!-- <td><p-button class="cust-button-primary" (click)="SubmitOrder(rowData.OrderId)">Submit Order
-                        </p-button></td> -->
+                        <td><p-button class="cust-button-primary" (click)="DownloadInvoice(rowData.OrderId)" >Download
+                        </p-button></td>
                         <td>{{ rowData.Date !== null ?
                             this.service.Moment(rowData.Date).format("MM-DD-YYYY"):'' }}
                         </td>
-
-
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">

@@ -1,7 +1,7 @@
 <section calss="CustomerAcquisitionsPage">
     <div class="row">
         <div class="col-12">
-            <h1>Manufactur Order Report ({{totalRecords}})</h1>
+            <h1>Manufacture Order Report ({{totalRecords}})</h1>
         </div>
     </div>
     <p-dialog header="Search" [position]="'right'" [(visible)]="displayModal" [style]="{width: '20vw'}" [modal]="true"
@@ -88,7 +88,7 @@
                     <!-- <button type="submit" (click)="search()" mat-button
                         class="mat-focus-indicator mat-button mat-button-base mat-secondary"
                         color="primary">Search</button> -->
-                        <button mat-button color="primary" type="submit" (click)="search();"
+                        <button mat-button  color="primary" type="submit" (click)="search();"
                         >Submit</button>
                 </div>
             </div>
@@ -110,10 +110,9 @@
                 </div>
             </div>
             <div class="btnWrap mb-3 mt-2">
-
                 <p-button class="cust-button" (click)="showBasicDialog()" matTooltip="Search" icon="pi pi-search">
                 </p-button>
-                <p-button class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
+                <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
                 </p-button>
             </div>
         </div>
@@ -145,11 +144,11 @@
                         <td><a target="_blank" [routerLink]="['OrderReportDetail',rowData.OrderId]">{{ rowData.OrderId
                                 }}</a>
                         </td>
-                        <td>{{rowData.WorkType}}</td>
-                        <td>{{rowData.ProductName}}</td>
-                        <td>{{rowData.ClientName}}</td>
-                        <td>{{rowData.DesignName}}</td>
-                        <td>{{rowData.Size}}</td>
+                        <!-- <td>{{rowData.WorkType}}</td> -->
+                        <!-- <td>{{rowData.ProductName}}</td> -->
+                        <!-- <td>{{rowData.ClientName}}</td> -->
+                        <!-- <td>{{rowData.DesignName}}</td> -->
+                        <!-- <td>{{rowData.Size}}</td> -->
                         <td>{{rowData.TotalItem || rowData.qty}}</td>
                         <td>{{rowData.AmountPerOneItem }}</td>
                         <td>{{rowData.TotalAmount }}</td>

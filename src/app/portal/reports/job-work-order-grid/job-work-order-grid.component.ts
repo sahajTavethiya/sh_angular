@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import * as XLSX from 'xlsx';
 import { OrderReportModel } from 'src/app/library/core/models/report/order-report.model';
 import { OrderReportServiceService } from '../order-report/order-report-service.service';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-job-work-order-grid',
   templateUrl: './job-work-order-grid.component.html',
@@ -65,7 +66,7 @@ export class JobWorkOrderGridComponent implements OnInit {
   ProductMaster: Array<any>;
   DesignMaster: Array<any>;
   StatusMaster: Array<any>;
-
+  showAddButton = false;
   searchObject: any = {}; // for exel
   cols = [
     { header: 'Material Issue Id', field: 'materialIssueId' },
@@ -80,6 +81,12 @@ export class JobWorkOrderGridComponent implements OnInit {
     // this.initialize();
     this.bindColumns();
     this.bindDropdowns();
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
+
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.JobWorkOrderReport)?.canInsert;
+   })
+
     // this.service.GetAllEmployees().subscribe((response: any) => {
     //   console.log(response);
     //   this.employeeList = response.data;
@@ -143,18 +150,11 @@ export class JobWorkOrderGridComponent implements OnInit {
 
   bindColumns() {
     this.cols = [
-      { header: 'Order Id', field: 'OrderId' },
-      // { header: 'Work Type', field: 'WorkType' },
-      // { header: 'Product Name', field: 'ProductName' },
+      { header: 'Order Id', field: 'OrderId' },      
       { header: 'Client Name', field: 'ClientName' },
-      // { header: 'Design Name', field: 'DesignName' },
-      // { header: 'Size', field: 'Size' },
-      // { header: 'Total Item', field: 'TotalItem' },
-      // { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
-      // { header: 'Total Amount', field: 'TotalAmount' },
       { header: 'Bill No', field: 'BillNo' },
-      // { header: 'UOM', field: 'UOM' },
-      // { header: 'SubmitOrder',field:'submitOrder'},
+      { header: 'Download', field: 'Download' },
+
       { header: 'Date', field: 'Date' },
     ];
   }
@@ -269,6 +269,29 @@ export class JobWorkOrderGridComponent implements OnInit {
   }
   showBasicDialog() {
     this.displayModal = true;
+  }
+  DownloadInvoice(invoiceId : number){
+    console.log("its here");
+    
+    let ReqData = {
+      OrderId : invoiceId
+    }
+    console.log(ReqData)
+    this.service.generateInvoiceOfJobWork(ReqData).subscribe((data:any) => {
+      if(data.status = "success"){
+        this.blob = new Blob([data], {type: 'application/pdf'});
+  
+        var downloadURL = window.URL.createObjectURL(this.blob);
+        var link = document.createElement('a');
+        link.href = downloadURL;
+        link.download ="DPR_NG_ConversionReports";
+        link.click();
+      }else{
+        this.service.notify.showError('File Not Found');
+      }
+      
+    
+    });
   }
   removeSearching(data: string): void {
     const index = this.displayArr.indexOf(data);

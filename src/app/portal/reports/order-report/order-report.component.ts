@@ -10,7 +10,7 @@ import { LazyLoadEvent } from 'primeng/api';
 import * as moment from 'moment';
 import * as XLSX from 'xlsx';
 import { OrderReportModel } from 'src/app/library/core/models/report/order-report.model';
-
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-order-report',
   templateUrl: './order-report.component.html',
@@ -66,7 +66,7 @@ export class OrderReportComponent implements OnInit {
   ProductMaster: Array<any>;
   DesignMaster: Array<any>;
   StatusMaster: Array<any>;
-
+  showAddButton = false;
   searchObject: any = {}; // for exel
   cols = [
     { header: 'Material Issue Id', field: 'materialIssueId' },
@@ -81,6 +81,9 @@ export class OrderReportComponent implements OnInit {
     // this.initialize();
     this.bindColumns();
     this.bindDropdowns();
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.ManufactureOrderReport)?.canInsert;
+   })
     // this.service.GetAllEmployees().subscribe((response: any) => {
     //   console.log(response);
     //   this.employeeList = response.data;
@@ -145,11 +148,11 @@ export class OrderReportComponent implements OnInit {
   bindColumns() {
     this.cols = [
       { header: 'Order Id', field: 'OrderId' },
-      { header: 'Work Type', field: 'WorkType' },
-      { header: 'Product Name', field: 'ProductName' },
-      { header: 'Client Name', field: 'ClientName' },
-      { header: 'Design Name', field: 'DesignName' },
-      { header: 'Size', field: 'Size' },
+      // { header: 'Work Type', field: 'WorkType' },
+      // { header: 'Product Name', field: 'ProductName' },
+      // { header: 'Client Name', field: 'ClientName' },
+      // { header: 'Design Name', field: 'DesignName' },
+      // { header: 'Size', field: 'Size' },
       { header: 'Total Item', field: 'TotalItem' },
       { header: 'Amount Per Piece', field: 'AmountPerOneItem' },
       { header: 'Total Amount', field: 'TotalAmount' },
@@ -245,6 +248,7 @@ export class OrderReportComponent implements OnInit {
       // }
 
       // console.log(this.displayArr);
+
 
       this.service
         .getOrderReport(this.searchData)

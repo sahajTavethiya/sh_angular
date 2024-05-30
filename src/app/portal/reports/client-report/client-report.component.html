@@ -90,7 +90,7 @@
                 
                 <p-button class="cust-button" (click)="showBasicDialog()" matTooltip="Search" icon="pi pi-search">
                 </p-button>
-                <p-button class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order"
+                <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order"
                 icon="pi pi-plus">
             </p-button>
             </div>

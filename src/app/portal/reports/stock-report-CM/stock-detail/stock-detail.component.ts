@@ -32,28 +32,14 @@ export class StockDetailComponent implements OnInit {
     bindDropdowns() {
       const categories = [
         this.service.constants.MasterCategories.RoleMaster,
-      //  this.service.constants.MasterCategories.ClientMaster,
-     //   this.service.constants.MasterCategories.WorkTypeMaster,
-    //  this.service.constants.MasterCategories.ProductMaster,
+        this.service.constants.MasterCategories.VendorMaster,
         this.service.constants.MasterCategories.SizeMaster,
-    //    this.service.constants.MasterCategories.DesignMaster,
-     //   this.service.constants.MasterCategories.StatusMaster,
         this.service.constants.MasterCategories.StockItemMaster,
         this.service.constants.MasterCategories.ColourMaster
-  
       ];
       this.service.getLookups(categories, (lookups:any) => {
          this.OrderReportDetailLookups = lookups;
-        // this.initialize();
-        console.log("this is a Lokkups",lookups);
         this.initialize();
-        // this.WorkTypeArray = lookups[this.service.constants.MasterCategories.WorkTypeMaster];
-        // this.ClietMaster = lookups[this.service.constants.MasterCategories.ClientMaster];
-        // this.ProductMaster = lookups[this.service.constants.MasterCategories.ProductMaster];
-        // this.SizeMaster = lookups[this.service.constants.MasterCategories.SizeMaster];
-        // this.DesignMaster = lookups[this.service.constants.MasterCategories.DesignMaster];
-        // this.StatusMaster = lookups[this.service.constants.MasterCategories.StatusMaster];
-  
       });
       
     }
@@ -102,10 +88,10 @@ this.routeUrl.navigate(["/StockReport"])
       const container = this.requestForm.getRawValue();
       console.log("this is a container",container);
 
-      this.service.addStock(container).subscribe((response:any)=>{
-        console.log(response);
-        return this.service.notify.showSuccess(response.message);
-      })
+      // this.service.addStock(container).subscribe((response:any)=>{
+      //   console.log(response);
+      //   return this.service.notify.showSuccess(response.message);
+      // })
    }else{
       console.log("its not valide form");
     }

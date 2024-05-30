@@ -9,6 +9,7 @@ export class AddBasicDetailOfStock {
             this.Rate = etl.Rate;
             this.ColourId = etl.ColourId;
             this.MeterPerItem = etl.MeterPerItem;
+            this.VendorId = etl.VendorId;
             }
     }
     @prop()
@@ -23,4 +24,6 @@ export class AddBasicDetailOfStock {
     MeterPerItem: number;
     @prop()
     SizeId: number;
+    @prop()
+    VendorId: number;
 }

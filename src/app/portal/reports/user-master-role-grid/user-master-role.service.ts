@@ -18,7 +18,7 @@ GetMaterialCategoryListForGrid(data: any) {
 }
 
 GetRolePermissions() {
-  return this.api.get(this.apiProxy.Common.GetRolePermissions());
+  return this.api.post(this.apiProxy.Common.GetRolePermissions(),{});
 }
 GetRoleListForGrid(data: any) {
   return this.api.post(this.apiProxy.Common.GetRoleListForGrid(), data);

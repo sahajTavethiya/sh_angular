@@ -10,6 +10,8 @@ import * as moment from 'moment';
 import * as XLSX from 'xlsx';
 import { OrderReportModel } from 'src/app/library/core/models/report/order-report.model';
 import { CustomerService } from './customer.service';
+import { environment } from 'src/environments/environment.prod';
+
 @Component({
   selector: 'app-customer-master',
   templateUrl: './customer-master.component.html',
@@ -65,7 +67,7 @@ export class CustomerMasterComponent implements OnInit {
   ProductMaster: Array<any>;
   DesignMaster: Array<any>;
   StatusMaster: Array<any>;
-
+  showAddButton  = false;
   searchObject: any = {}; // for exel
   cols = [
     { header: 'Material Issue Id', field: 'materialIssueId' },
@@ -80,6 +82,11 @@ export class CustomerMasterComponent implements OnInit {
     // this.initialize();
     this.bindColumns();
     this.bindDropdowns();
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
+
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.CustomerMaster)?.canInsert;
+   })
   }
 
   initialize() {

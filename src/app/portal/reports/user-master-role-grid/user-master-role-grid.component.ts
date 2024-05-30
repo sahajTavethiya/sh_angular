@@ -98,9 +98,9 @@ export class UserMasterRoleGridComponent implements OnInit {
   ngOnInit(): void {
     const json = JSON.parse(localStorage.getItem('currentUser') || '{}');
     this.service.GetRolePermissions().subscribe((response:any)=>{
-       console.log("this is a response",response.data.table);
+       console.log("this is a response",response.data.result);
 
-      this.showAddUserButton = response.data.table.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster)?.canInsert;
+      this.showAddUserButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster)?.canInsert;
     })
 
     this.initialize();
@@ -151,7 +151,8 @@ export class UserMasterRoleGridComponent implements OnInit {
     this.service.GetRoleListForGrid(obj).subscribe((response: any) => {
       console.log(response);
       this.ProjectList = response.data.result;
-      this.totalRecords = response.data.rowCount;
+      this.totalRecords = response.data.RowCount
+      ;
       console.log("All Data --", this.ProjectList);
 
     })

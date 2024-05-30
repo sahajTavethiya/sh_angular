@@ -378,11 +378,20 @@ GetRoleDetailById: (id: any) => {
     generateInvoiceOfSell() {
       return `/manager/generateInvoiceOfSell`;
     },
+    generateInvoiceOfJobWork() {
+      return `/admin/GeneratePDF_OfJobwork`;
+    },
     GetSellDetailById(){
       return `/admin/GetSellDetailById`
     },
     SaveVendor(){
       return `/admin/saveVendor`
+    },
+    GetListOfRemainingPaymentToPay(){
+      return  `/admin/GetListOfRemainingPaymentToPay`
+    },    
+    GetListOfRemainingPaymentToReceive(){
+      return  `/admin/GetListOfRemainingPaymentToReceive`
     }
   };
 }

@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { OrderReportModel } from 'src/app/library/core/models/report/order-report.model';
 import { ClientService } from './client.service';
 import { ClinetReportModel } from 'src/app/library/core/models/report/clientReport/client-report.model';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-client-report',
   templateUrl: './client-report.component.html',
@@ -56,7 +57,7 @@ export class ClientReportComponent implements OnInit {
   isAllSelect: boolean = false;
   dashboardSearch: any;
 
-
+  showAddButton = false;
   searchObject : any = {} // for exel 
   cols = [    
     { header: 'Material Issue Id', field: 'materialIssueId' },
@@ -71,6 +72,12 @@ export class ClientReportComponent implements OnInit {
     // this.initialize();
     this.bindColumns();
     this.bindDropdowns();
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
+
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.ClientMaster)?.canInsert;
+   })
+
     // this.service.GetAllEmployees().subscribe((response: any) => {
     //   console.log(response); 
     //   this.employeeList = response.data;

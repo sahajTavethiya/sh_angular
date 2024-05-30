@@ -72,7 +72,7 @@
                     <!-- <td>{{ rowData.hsnCode || "N/A" }}</td> -->
                     <td>{{ rowData.qty || "N/A" }}</td>
                     <!-- <td>{{ rowData.rate || "N/A" }}</td> -->
-                      <p-button label="Add" icon="pi pi-plus" iconPos="left" (onClick)="addOpenSparesConsumables(rowData.TblId)">
+                      <p-button label="Add" icon="pi pi-plus" [disabled]="!showAddButton" iconPos="left" (onClick)="addOpenSparesConsumables(rowData.TblId)">
                     </p-button>
           
                     <!-- *ngIf="requestForm.controls.assignedManpowerPermission.get('delete')?.value" -->

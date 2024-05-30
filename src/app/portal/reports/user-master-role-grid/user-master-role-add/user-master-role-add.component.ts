@@ -40,7 +40,8 @@ export class UserMasterRoleAddComponent implements OnInit {
     this.service.GetRolePermissions().subscribe((response: any) => {
       console.log("this is a kalu", response);
       if (this.RoleId != null) {
-        let obj = response.data.table.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster);
+        let obj = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster);
+        console.log("This is a update",obj)
         if (obj.canUpdate == false) {
           this.saveButton = false;
         }
@@ -48,7 +49,7 @@ export class UserMasterRoleAddComponent implements OnInit {
 
       }
       if (this.RoleId != null) {
-        let obj = response.data.table.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster);
+        let obj = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.RoleMaster);
         if (obj.canDelete == false) {
           this.userMasterDelete = false;
         }
@@ -123,7 +124,7 @@ export class UserMasterRoleAddComponent implements OnInit {
         }
 
         //  this.rolePermissionById = response.data.table;
-        this.rolePermissionById = await response.data.table.map((item: any) => {
+        this.rolePermissionById = await response.data.map((item: any) => {
           const { CanView, CanUpdate, CanInsert, CanDelete, canApprove, ResourceId, resourceName, ...rest } = item;
           this.isLoading = false;
           console.log(`CanView-${item.canView},CanInsert-${item.canInsert},CanUpdate-${item.canUpdate},CanDelete-${item.canDelete}`);
@@ -148,10 +149,10 @@ export class UserMasterRoleAddComponent implements OnInit {
         }, 200);
 
         this.modelObj = {
-          roleName: response.data.table[0].roleName,
-          roleDescription: response.data.table[0].roleDescription,
+          roleName: response.data[0].roleName,
+          roleDescription: response.data[0].roleDescription,
           status: 1, // response.data.table[0].status  , 
-          roleId: response.data.table[0].roleId,
+          roleId: response.data[0].roleId,
         };
 
         //  })
@@ -165,7 +166,8 @@ export class UserMasterRoleAddComponent implements OnInit {
     ];
     this.service.getLookups(categories, (async (lookups: any) => {
       console.log(JSON.stringify(lookups));
-      if (lookups && this.rolePermissionById.length > 46) {
+      // && this.rolePermissionById.length > 46
+      if (lookups ) {
         this.AllRole = lookups[this.service.constants.MasterCategories.MasterResource];
         this.AllRole.forEach(async (objB: any) => {
           const matchingObjA = await this.rolePermissionById.find((objA: any) => objA.resourceId == objB.keyName);
@@ -189,10 +191,10 @@ export class UserMasterRoleAddComponent implements OnInit {
       } else {
         this.setdataInArray();
       }
-      if (this.rolePermissionById.length > 46) {
+      // if (this.rolePermissionById.length > 46) {
         const requestContainer = new UserRoleMasterModel(this.modelObj);
         this.requestForm = this.formBuilder.formGroup(requestContainer);
-      }
+      // }
     }
     ));
   }

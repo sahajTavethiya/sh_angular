@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/library/shared/services/auth.service';
 import { AddOrderBasicDetail } from 'src/app/library/core/models/add-order-basic-detail.model';
 import { SubmitWorkService } from '../submit-work.service';
 import { RequestContainer } from 'src/app/library/core/models/report/dailyWork/container.model';
-
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-submit-work-detail-page',
   templateUrl: './submit-work-detail-page.component.html',
@@ -20,6 +20,7 @@ export class SubmitWorkDetailPageComponent implements OnInit {
   requestId : number;
   OrderReportDetailLookups:any;
   AssignList : Array<any>;
+  showSubmitButton= false;
   constructor(readonly service: SubmitWorkService,
     readonly route: ActivatedRoute,
     readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog,readonly authService: AuthService,
@@ -28,6 +29,9 @@ export class SubmitWorkDetailPageComponent implements OnInit {
     ngOnInit(): void {
       this.requestId = parseInt(this.route.snapshot.params.id);
       this.bindDropdowns();
+      this.authService.GetRolePermissions().subscribe((response:any)=>{ 
+        this.showSubmitButton = response.data.table.some((obj: any) => obj.resourceId === environment.ResourceMasterIds.DailyWorkStatus &&  (obj.canInsert || obj.canUpdate));
+      })
     }
 
     bindDropdowns() {

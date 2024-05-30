@@ -31,7 +31,7 @@
 <app-footer></app-footer> -->
 <!-- </div> -->
 <app-loader></app-loader>
-<div *ngIf="isitHomepage; else otherRoutesHeader">
+<div *ngIf="isitHomepage ; else  otherRoutesHeader">
   <router-outlet></router-outlet>
 </div>
 <ng-template #otherRoutesHeader>

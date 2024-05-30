@@ -11,18 +11,26 @@
         </div>
         <div class="col-12 col-md-4 pb-3">
             <div class="form-group">
+                <label>Vendor :</label>                
+                <p-dropdown [options]="VendorMaster" (onChange)="ChangeStockItem()" class="ui-input" optionValue="keyName" formControlName="VendorId" optionLabel="DisplayText" placeholder="-Select-">
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 pb-3">
+            <div class="form-group">
                 <label>No Of Items : </label>
                 <input pInputText class="form-control" formControlName="NoOfItem"/>
             </div>
         </div>
+
+    </div>
+     <div class="row">
         <div class="col-12 col-md-4 pb-3">
             <div class="form-group">
                 <label>Rate : </label>
                 <input pInputText class="form-control" formControlName="Rate"/>
             </div>
         </div>
-    </div>
-     <div class="row">
         <div *ngIf="showSizeMaster" class="col-4">
             <div class="form-group">
                 <label>Size : </label>
@@ -71,6 +79,7 @@
         
     </div> -->
     <div class="row">
+
         <!-- <div class="col-4">
             <div class="form-group">
                 <label>Client</label>

@@ -18,6 +18,7 @@ export class BasicDetailOfStockComponent implements OnInit {
   DesignMaster : Array<any>;
   StatusMaster : Array<any>;
   ColourMaster : Array<any>;
+  VendorMaster : Array<any>;
   showColourMaster = false;
   showSizeMaster = false;
   showMeterPerItem = false;
@@ -39,6 +40,8 @@ export class BasicDetailOfStockComponent implements OnInit {
     // ];
     //  this.WorkTypeArray = this.lookups[this.service.constants.MasterCategories.WorkTypeMaster];
       this.StockItemArray = this.lookups[this.service.constants.MasterCategories.StockItemMaster];
+      this.VendorMaster = this.lookups[this.service.constants.MasterCategories.VendorMaster];
+
    //   this.ProductMaster = this.lookups[this.service.constants.MasterCategories.ProductMaster];
       this.SizeMaster = this.lookups[this.service.constants.MasterCategories.SizeMaster];
     //  this.DesignMaster = this.lookups[this.service.constants.MasterCategories.DesignMaster];

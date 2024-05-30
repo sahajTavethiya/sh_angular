@@ -56,7 +56,8 @@ export class JobWorkOrderDetailComponent implements OnInit {
   currentPath: any;
   initialize() {
     this.currentPath = this.route.snapshot.url.join('/');
-    if (this.currentPath === 'OrderReportDetail') {
+    console.log("this.currentPath",this.currentPath)
+    if (this.currentPath === 'JobWorkOrderReportDetail') {
       this.IsAddOrderForm = true;
     }
     console.log(this.IsAddOrderForm);

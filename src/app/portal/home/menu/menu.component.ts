@@ -38,8 +38,8 @@ export class MenuComponent implements OnInit {
   }
 
   initialize() {
-
-    this.menus = [
+    this.authService.GetRolePermissions().subscribe((response: any) => {
+    this.menus = [];
       // {
       //   displayName: 'User Management', matIcon: 'manage_accounts',
       //   children: [
@@ -96,26 +96,141 @@ export class MenuComponent implements OnInit {
       //     { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 },
       //   ]
       // },
-      {
-        displayName: 'Job Work', matIcon: 'dashboard',
-        children: [
-          { displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 },
-          { displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 },
-          { displayName: 'Assign Task', matIcon: 'list', url: '/AssignTask', type: 1 },
-          { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 }
-        ]
-      },
-      {
-        displayName: 'Manufactur', matIcon: 'dashboard',
-        children: [
-          { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
-          { displayName: 'Vendor Masters', matIcon: 'list', url: '/Vendor', type: 1 },
-          { displayName: 'Customer Masters', matIcon: 'list', url: '/Customer', type: 1 },
-          { displayName: 'Production Report', matIcon: 'list', url: '/ProductionReport', type: 1 },
-          { displayName: 'Sell Report', matIcon: 'list', url: '/Selling', type: 1 },
-        ]
+      if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.JobWorkOrderReport || x.resourceId == environment.ResourceMasterIds.ClientMaster ||
+        x.resourceId == environment.ResourceMasterIds.AssignTask || x.resourceId == environment.ResourceMasterIds.DailyWorkStatus ) && x.canView == true) !== -1) {
+        let ServiceRequests = {
+          displayName: 'Job Work',
+          matIcon: 'dashboard',
+          children: [{ displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 },]
+        }
+        ServiceRequests.children = [];
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.JobWorkOrderReport)?.canView) {
+          let A = { displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.ClientMaster)?.canView) {
+          let A ={ displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.AssignTask)?.canView) {
+          let A = { displayName: 'Assign Task', matIcon: 'list', url: '/AssignTask', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.DailyWorkStatus)?.canView) {
+          let A = { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        this.menus.push(ServiceRequests)
+        
       }
-    ];
+      if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.ManufactureOrderReport || x.resourceId == environment.ResourceMasterIds.VendorMaster ||
+        x.resourceId == environment.ResourceMasterIds.CustomerMaster || x.resourceId == environment.ResourceMasterIds.ProductionReport  || x.resourceId == environment.ResourceMasterIds.SellingReport ) && x.canView == true) !== -1) {
+        let ServiceRequests = {
+          displayName: 'Manufactur',
+          matIcon: 'dashboard',
+          children: [ { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 }]
+        }
+        ServiceRequests.children = [];
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.ManufactureOrderReport)?.canView) {
+          let A =  { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.VendorMaster)?.canView) {
+          let A = { displayName: 'Vendor Masters', matIcon: 'list', url: '/Vendor', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.CustomerMaster)?.canView) {
+          let A =  { displayName: 'Customer Masters', matIcon: 'list', url: '/Customer', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.ProductionReport)?.canView) {
+          let A = { displayName: 'Production Report', matIcon: 'list', url: '/ProductionReport', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.SellingReport )?.canView) {
+          let A =   { displayName: 'Sell Report', matIcon: 'list', url: '/Selling', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        this.menus.push(ServiceRequests)
+      }
+      if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.WorkerReport || x.resourceId == environment.ResourceMasterIds.StockReport ||
+        x.resourceId == environment.ResourceMasterIds.MasterPage  || x.resourceId == environment.ResourceMasterIds.RoleMaster ) && x.canView == true) !== -1) {
+        let ServiceRequests = {
+          displayName: 'Common Report',
+          matIcon: 'dashboard',
+          children: [ { displayName: 'Worker Report', matIcon: 'list', url: '/WorkerReport', type: 1 }]
+        }
+        ServiceRequests.children = [];
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.WorkerReport)?.canView) {
+          let A = { displayName: 'Worker Report', matIcon: 'list', url: '/WorkerReport', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.StockReport)?.canView) {
+          let A =  { displayName: 'Stock Report', matIcon: 'list', url: '/StockReport', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.MasterPage)?.canView) {
+          let A = { displayName: 'Add Masters', matIcon: 'list', url: '/AddMasters', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        // if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.TransactionMaster)?.canView) {
+        //   let A =  { displayName: 'Transaction Masters', matIcon: 'list', url: '/Transaction', type: 1 };
+        //   ServiceRequests.children.push(A)
+        // };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.RoleMaster )?.canView) {
+          let A =   { displayName: 'Role Master', matIcon: 'list', url: '/userRoleMaster', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        let A =   { displayName: 'Get Money From', matIcon: 'list', url: '/GetMoneyFrom', type: 1 };
+        let B =   { displayName: 'Give Money To', matIcon: 'list', url: '/PayMoneyTo', type: 1 };
+        ServiceRequests.children.push(A)
+        ServiceRequests.children.push(B)
+        this.menus.push(ServiceRequests)
+      }
+
+      if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.TransactionMaster || x.resourceId == environment.ResourceMasterIds.GetMoneyFrom ||
+        x.resourceId == environment.ResourceMasterIds.GiveMoneyTo ) && x.canView == true) !== -1) {
+        let ServiceRequests = {
+          displayName: 'Account Report',
+          matIcon: 'dashboard',
+          children: [ { displayName: 'Transaction Report', matIcon: 'list', url: '/Transaction', type: 1 }]
+        }
+        ServiceRequests.children = [];
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.TransactionMaster)?.canView) {
+          let A = { displayName: 'Transaction Report', matIcon: 'list', url: '/Transaction', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.GetMoneyFrom)?.canView) {
+          let A =   { displayName: 'Get Money From', matIcon: 'list', url: '/GetMoneyFrom', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.GiveMoneyTo)?.canView) {
+          let A = { displayName: 'Give Money To', matIcon: 'list', url: '/PayMoneyTo', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        this.menus.push(ServiceRequests)
+      }
+      // {
+      //   displayName: 'Job Work', matIcon: 'dashboard',
+      //   children: [
+      //     { displayName: 'Job Work Order', matIcon: 'list', url: '/JobWorkOrder', type: 1 },
+      //     { displayName: 'Client Report', matIcon: 'list', url: '/ClientReport', type: 1 },
+      //     { displayName: 'Assign Task', matIcon: 'list', url: '/AssignTask', type: 1 },
+      //     { displayName: 'Daily Work Report', matIcon: 'list', url: '/DailyWork', type: 1 }
+      //   ]
+      // },
+      // {
+      //   displayName: 'Manufactur', matIcon: 'dashboard',
+      //   children: [
+      //     { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
+      //     { displayName: 'Vendor Masters', matIcon: 'list', url: '/Vendor', type: 1 },
+      //     { displayName: 'Customer Masters', matIcon: 'list', url: '/Customer', type: 1 },
+      //     { displayName: 'Production Report', matIcon: 'list', url: '/ProductionReport', type: 1 },
+      //     { displayName: 'Sell Report', matIcon: 'list', url: '/Selling', type: 1 },
+      //   ]
+      // }
+    
+  })
   }
 
   oldAppClick(URL: any) {

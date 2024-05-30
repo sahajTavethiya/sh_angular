@@ -13,7 +13,7 @@ import { AssignTaskDetailDialogComponent } from './assign-task-detail-dialog/ass
 import { OrderAssignModel } from 'src/app/library/core/models/report/orderAssign/order_assign.model';
 import { AssignTaskDetailService } from '../../assign-task-detail.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-assign-task-detail-page',
   templateUrl: './assign-task-detail-page.component.html',
@@ -28,7 +28,8 @@ export class AssignTaskDetailPageComponent implements OnInit {
   Spareshowaddbutt: any = false;
   Openingaddbutt: any = true;
   ActualTaskTypeDelete: any = true;
-  orderproductData :any
+  orderproductData :any;
+  showAddButton = false;
   constructor(readonly service: AssignTaskDetailService,
     readonly route: ActivatedRoute,
     readonly formBuilder: RxFormBuilder, readonly authService: AuthService,
@@ -46,7 +47,11 @@ export class AssignTaskDetailPageComponent implements OnInit {
     this.service.getJobWorkOrderDetailById(obj).subscribe((response: any) => {
       this.orderproductData = response.data.JobWorkProductData;
     })
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
 
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.AssignTask)?.canInsert;
+   })
     console.log("Request Form --", this.requestForm);
 
     // if (this.requestForm.controls.request.get('enquiryStatus')?.value == 2 && this.requestForm.controls.assignedManpowerList?.value.length != 0) {

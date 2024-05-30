@@ -7,7 +7,8 @@ import { DailyWorkBasicDetail } from 'src/app/library/core/models/report/dailyWo
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { ConfirmationDialogComponent } from 'src/app/library/shared/confirmation-dialog/confirmation-dialog.component';
 import { ActivatedRoute } from '@angular/router';
-
+import { AuthService } from 'src/app/library/shared/services/auth.service';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-submit-work-basic-detail',
   templateUrl: './submit-work-basic-detail.component.html',
@@ -18,7 +19,8 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
   @Input() AssignList: Array<any>;
   orderproductData:any;
   requestId:number;
-  constructor(readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly service: SubmitWorkService,readonly route: ActivatedRoute,) { }
+  showAddButton=false;
+  constructor(readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly service: SubmitWorkService,readonly route: ActivatedRoute,readonly authService: AuthService,) { }
 
   ngOnInit(): void {
     this.requestId = parseInt(this.route.snapshot.params.id);
@@ -28,6 +30,11 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
     this.service.getJobWorkOrderDetailById(obj).subscribe((response: any) => {
       this.orderproductData = response.data.JobWorkProductData;
     })
+    this.authService.GetRolePermissions().subscribe((response:any)=>{
+      console.log("this is a response",response.data.result);
+
+     this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.DailyWorkStatus)?.canInsert;
+   })
   }
   addOpenSaveDailyWork(tblId:number) {
     const dialogRef = this.dialog.open(AddSubmitWorkDetailPopupComponent, {

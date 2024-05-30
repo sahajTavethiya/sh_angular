@@ -55,4 +55,7 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(new User());
   }
+  GetRolePermissions() {
+    return this.api.post(this.apiProxy.Common.GetRolePermissions(),{});
+  }
 }
