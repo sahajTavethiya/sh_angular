@@ -58,6 +58,7 @@ import { UserMasterRoleGridComponent } from './portal/reports/user-master-role-g
 import { UserMasterRoleAddComponent } from './portal/reports/user-master-role-grid/user-master-role-add/user-master-role-add.component';
 import { GetMoneyFromGridComponent } from './portal/reports/get-money-from-grid/get-money-from-grid.component';
 import { GiveMoneyToGridComponent } from './portal/reports/give-money-to-grid/give-money-to-grid.component';
+import { EmployeeWorkReportComponent } from './portal/reports/employee-work-report/employee-work-report.component';
 
 const routes: Routes = [
   {
@@ -98,6 +99,11 @@ const routes: Routes = [
     path: 'PayMoneyTo',
     canActivate: [AuthGuard],
     component: GiveMoneyToGridComponent
+  },
+  {
+    path: 'EmployeeWorkReport',
+    canActivate: [AuthGuard],
+    component: EmployeeWorkReportComponent
   },
   {
     path: 'OrderReport',

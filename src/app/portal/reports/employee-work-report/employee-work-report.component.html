@@ -1,7 +1,7 @@
 <section calss="CustomerAcquisitionsPage">
     <div class="row">
         <div class="col-12">
-            <h1>Job Work Order Report ({{totalRecords}})</h1>
+            <h1>Employee Work Report ({{totalRecords}})</h1>
         </div>
     </div>
     <p-dialog header="Search" [position]="'right'" [(visible)]="displayModal" [style]="{width: '20vw'}" [modal]="true"
@@ -21,12 +21,9 @@
                      </p-dropdown>
                 </div>
             </div> -->
-            <div class="col-12">
+            <!-- <div class="col-12">
                 <div class="form-group">
                     <label>Work Type : </label>
-                    <!-- <p-multiSelect appendTo="body" [options]="WorkTypeMaster" formControlName="workTypeId"
-                        class="ui-input" optionValue="keyName" optionLabel="DisplayText" placeholder="-Select-">
-                    </p-multiSelect> -->
                     <p-multiSelect appendTo="body" [options]="WorkTypeMaster" formControlName="workTypeId"
                     class="ui-input" optionValue="KeyName" optionLabel="DisplayText" placeholder="-Select-">
                 </p-multiSelect>
@@ -80,7 +77,7 @@
                         <input type="date" formControlName="toDate" class="form-control">
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="btnWrap">
                 <div>
                     <button type="button" (click)="reset()" color="secondary"
@@ -113,8 +110,8 @@
 
                 <p-button class="cust-button" (click)="showBasicDialog()" matTooltip="Search" icon="pi pi-search">
                 </p-button>
-                <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
-                </p-button>
+                <!-- <p-button *ngIf="showAddButton" class="cust-button-primary" (click)="addOrder()" matTooltip="Add Order" icon="pi pi-plus">
+                </p-button> -->
             </div>
         </div>
 
@@ -141,16 +138,19 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-ri="rowIndex">
                     <tr class="searchTr">
-                        <td><a target="_blank" [routerLink]="['JobWorkOrderReportDetail',rowData.OrderId]">{{ rowData.OrderId
+                        <!-- <td><a target="_blank" [routerLink]="['JobWorkOrderReportDetail',rowData.Id]">{{ rowData.Id
                                 }}</a>
-                        </td>
-                        <td>{{rowData.ClientName}}</td>
-                        <td>{{rowData.BillNo}}</td>
-                        <td><p-button class="cust-button-primary" (click)="DownloadInvoice(rowData.OrderId)" >Download
-                        </p-button></td>
-                        <td>{{ rowData.Date !== null ?
+                        </td> -->
+                        <td>{{ rowData.Id}}</td>
+                        <td>{{rowData.EmployeeName}}</td>
+                        <td>{{rowData.MonthYear}}</td>
+                        <td>{{rowData.TotalWork}}</td>
+
+                        <!-- <td><p-button class="cust-button-primary" (click)="DownloadInvoice(rowData.OrderId)" >Download
+                        </p-button></td> -->
+                        <!-- <td>{{ rowData.Date !== null ?
                             this.service.Moment(rowData.CreatedOn).format("MM-DD-YYYY"):'' }}
-                        </td>
+                        </td> -->
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">

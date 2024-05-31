@@ -15,7 +15,7 @@ export class AddSubmitWorkDetailPopupComponent implements OnInit {
   EmployeeArr : Array<any>;
   
   constructor(readonly formBuilder: RxFormBuilder, public dialogRef: MatDialogRef<AddSubmitWorkDetailPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { AssignList : Array<any>, tblId:number},readonly service: SubmitWorkService ) { }
+    @Inject(MAT_DIALOG_DATA) public data: { AssignList : Array<any>, subOrderId:number,assignTaskId:number},readonly service: SubmitWorkService ) { }
   
   ngOnInit(): void {
   this.initialize();
@@ -51,10 +51,11 @@ const formattedDate = currentDate.toISOString();
       }
       taskType.assignTaskMasterId = obj.AssignTaskMasterId;
       taskType.completedByEmployee = true;
-      taskType.workRatePerPiece = obj.WorkRatePerPiece,
-      taskType.isDelete = 0,
-      taskType.tblId = 0 
-      taskType.jobWorkOrderDetailId = this.data.tblId 
+      taskType.workRatePerPiece = obj.WorkRatePerPiece;
+      taskType.isDelete = 0;
+      taskType.tblId = 0 ;
+      taskType.jobWorkOrderDetailId = this.data.subOrderId
+      taskType.assignTaskMasterId = this.data.assignTaskId
       this.dialogRef.close(taskType);
     } else {
       this.SaveWorkForm.markAllAsTouched();

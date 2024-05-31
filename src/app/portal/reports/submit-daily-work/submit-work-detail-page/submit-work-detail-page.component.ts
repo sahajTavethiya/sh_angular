@@ -30,7 +30,7 @@ export class SubmitWorkDetailPageComponent implements OnInit {
       this.requestId = parseInt(this.route.snapshot.params.id);
       this.bindDropdowns();
       this.authService.GetRolePermissions().subscribe((response:any)=>{ 
-        this.showSubmitButton = response.data.table.some((obj: any) => obj.resourceId === environment.ResourceMasterIds.DailyWorkStatus &&  (obj.canInsert || obj.canUpdate));
+        this.showSubmitButton = response.data.result.some((obj: any) => obj.resourceId === environment.ResourceMasterIds.DailyWorkStatus &&  (obj.canInsert || obj.canUpdate));
       })
     }
 
@@ -103,7 +103,13 @@ this.routeUrl.navigate(['/DailyWork'])
       }
       this.service.saveDailyWork(obj).subscribe((response:any)=>{
         console.log(response);
-        return this.service.notify.showSuccess(response.message);
+        if(response.status ==  200){
+          this.service.notify.showSuccess(response.message);
+          this.routeUrl.navigate(['/DailyWork'])
+        }else{
+          this.service.notify.showError(response.message);
+        }
+        
       })
    // }else{
       console.log("its not valide form");

@@ -34,6 +34,7 @@ export const environment = {
     GetMoneyFrom:17,
     GiveMoneyTo:18,
 
+    EmployeeWorkerReport : 19,
       // LocationReportsViewManpowerLocationDetails: 14,
       // ReportsHelpdeskSR1: 15,
       // ReportsAttendanceReport: 16,

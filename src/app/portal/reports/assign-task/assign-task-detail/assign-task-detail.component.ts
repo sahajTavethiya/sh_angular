@@ -37,7 +37,7 @@ export class AssignTaskDetailComponent implements OnInit {
       this.requestId = parseInt(this.route.snapshot.params.id);
       this.bindDropdowns();
       this.authService.GetRolePermissions().subscribe((response:any)=>{ 
-       this.showSubmitButton = response.data.table.some((obj: any) => obj.resourceId === environment.ResourceMasterIds.AssignTask &&  (obj.canInsert || obj.canUpdate));
+       this.showSubmitButton = response.data.result.some((obj: any) => obj.resourceId === environment.ResourceMasterIds.AssignTask &&  (obj.canInsert || obj.canUpdate));
      })
     }
 
@@ -106,12 +106,9 @@ export class AssignTaskDetailComponent implements OnInit {
   onSave(){
   //  if (this.requestForm.valid) {
       const container = this.requestForm.getRawValue();
-      console.log("this is a container",container);
-
       let obj = {
         "AssignTaskTableType": container.request
       }
-      console.log(obj)
       this.service.assignTaskToEmployee(obj).subscribe((response:any)=>{
         console.log(response);
         return this.service.notify.showSuccess(response.message);

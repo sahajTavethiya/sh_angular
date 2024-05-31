@@ -1,6 +1,6 @@
 <h1>Dashbord</h1>
 
-<section class="dashboardsPage">
+<section *ngIf="permissionData" class="dashboardsPage">
 
     <div class="row">
         <!-- <div class="col-lg-2 col-md-12">
@@ -18,7 +18,7 @@
                             appendTo="body" optionLabel="displayText" optionValue="keyName" placeholder="All Services">
                         </p-multiSelect>
                     </div> -->
-                    
+
                     <!-- <div class="formControl">
                       <div class="form-group">
                         <label>Date From</label>
@@ -44,8 +44,8 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-6 dcards">
-      <a (click)="addjobwork()">
+    <div  class="row row-cols-1 row-cols-md-2 row-cols-xl-6 dcards">
+      <a *ngIf="canInsertPermission(resourceMasterId.JobWorkOrderReport)" (click)="addjobwork()">
         <div class="col">
           <div class="card radius-10" style="cursor: pointer;">
             <div class="card-body">
@@ -65,9 +65,9 @@
           </div>
       </div>
       </a>
-       <a (click)="AddManufacturer()">
+       <a *ngIf="canInsertPermission(resourceMasterId.ManufactureOrderReport)" (click)="AddManufacturer()">
         <div class="col">
-            <div class="card radius-10" style="cursor: pointer;">
+            <div  class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between ">
                   <h5 class="mb-0 text-primary sbg2Color"> + </h5>
@@ -85,7 +85,7 @@
             </div>
         </div>
         </a>
-       <a (click)="stockReport()">
+       <a *ngIf="canInsertPermission(resourceMasterId.StockReport)" (click)="addStock()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -99,21 +99,19 @@
                   <mat-divider></mat-divider>
                 </div>
                 <div class="d-flex align-items-center">
-                  <p class="mb-0">Stock Report</p>
+                  <p class="mb-0">Add Stock </p>
                 </div>
               </div>
             </div>
         </div>
       </a>
-       <a (click)="VendorMaster()">
+       <!-- <a *ngIf="canInsertPermission(resourceMasterId.VendorMaster)" (click)="VendorMaster()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between ">
                   <h5 class="mb-0 text-primary sbg5Color">+</h5>
-                  <!-- <p class="dashIcon sbg5Color">
-                    <i class="fa fa-fw fa-spinner"></i>
-                  </p> -->
+
                 </div>
                 <div class="my-2">
                   <mat-divider></mat-divider>
@@ -124,8 +122,8 @@
               </div>
             </div>
         </div>
-      </a>
-      <a (click)="ClientReport()">
+      </a> -->
+      <a  *ngIf="canInsertPermission(resourceMasterId.ClientMaster)"  (click)="addClient()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -139,13 +137,13 @@
                   <mat-divider></mat-divider>
                 </div>
                 <div class="d-flex align-items-center">
-                  <p class="mb-0">Active Client</p>
-                </div> 
+                  <p class="mb-0">Add Client</p>
+                </div>
               </div>
             </div>
         </div>
       </a>
-      <a (click)="VendorReport()">
+      <a *ngIf="canInsertPermission(resourceMasterId.VendorMaster)"  (click)="addVendor()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -159,13 +157,32 @@
                   <mat-divider></mat-divider>
                 </div>
                 <div class="d-flex align-items-center">
-                  <p class="mb-0">Active Vendor</p>
+                  <p class="mb-0">Add Vendor</p>
                 </div>
               </div>
             </div>
         </div>
-      </a> 
-
+      </a>
+      <a *ngIf="canInsertPermission(resourceMasterId.CustomerMaster)"  (click)="addCustomer()">
+        <div class="col">
+            <div class="card radius-10" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between ">
+                  <h5 class="mb-0 text-primary sbg4Color">+</h5>
+                  <!-- <p class="dashIcon sbg4Color">
+                    <i class="fas fa-times-circle"></i>
+                  </p> -->
+                </div>
+                <div class="my-2">
+                  <mat-divider></mat-divider>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Add Customer</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </a>
     </div>
 
 
@@ -210,7 +227,7 @@
             </div>
         </div>
         </a>
-        <a (click)="UserReport()">
+        <!-- <a (click)="UserReport()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -229,8 +246,8 @@
               </div>
             </div>
         </div>
-      </a>
-      <a (click)="UserReport()">
+      </a> -->
+      <!-- <a (click)="UserReport()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -249,8 +266,8 @@
               </div>
             </div>
         </div>
-      </a>
-      <a (click)="ClientReport()">
+      </a> -->
+      <!-- <a (click)="ClientReport()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -265,12 +282,12 @@
                 </div>
                 <div class="d-flex align-items-center">
                   <p class="mb-0">Active Client</p>
-                </div> 
+                </div>
               </div>
             </div>
         </div>
-      </a>
-      <a (click)="VendorReport()">
+      </a> -->
+      <!-- <a (click)="VendorReport()">
         <div class="col">
             <div class="card radius-10" style="cursor: pointer;">
               <div class="card-body">
@@ -289,7 +306,7 @@
               </div>
             </div>
         </div>
-      </a>
+      </a> -->
 
     </div>
 
@@ -371,4 +388,4 @@
     </div> -->
 
 
-</section> 
+</section>

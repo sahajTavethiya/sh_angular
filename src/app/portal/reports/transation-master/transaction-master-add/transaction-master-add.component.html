@@ -86,7 +86,7 @@
               <p-dropdown
                 [options]="TransactionForArr"
                 class="ui-input"
-                optionValue="KeyName"
+                optionValue="keyName"
                 formControlName="transactionForId"
                 optionLabel="DisplayText"
                 placeholder="-Select-"
@@ -107,8 +107,9 @@
               >
               </p-dropdown>
             </div>
+            <!-- transactionForId = 5 : Employee ,transactionTypeId : 2 Debit -->
             <div class="col-12 col-md-4" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 5 && requestForm.get('transactionTypeId')?.value == 2">
-              <label class="padding">PaymentBy : </label>
+              <label class="padding">Sallary To : </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
                 [options]="PaymentToMaster"
@@ -121,7 +122,7 @@
               </p-dropdown>
             </div>
             <div class="col-12 col-md-4" style="padding-bottom: 20px" *ngIf="requestForm.get('transactionForId')?.value == 6 && requestForm.get('transactionTypeId')?.value == 2">
-              <label class="padding">PaymentBy : </label>
+              <label class="padding">Payment To: </label>
               <!-- <input type="text" formControlName="name" class="form-control"/> -->
               <p-dropdown
                 [options]="VendorMaster"
@@ -133,8 +134,6 @@
               >
               </p-dropdown>
             </div>
-          </div>
-          <div class="row">
             <div class="col-12 col-md-4" style="padding-bottom: 20px">
               <label class="padding">Amount : </label>
               <input type="number" formControlName="amount" class="form-control"/>
@@ -143,6 +142,9 @@
               <label class="padding"> Note: </label>
               <input type="text" formControlName="note" class="form-control"/>
             </div>
+          </div>
+          <div class="row">
+           
             
           </div>
         </mat-card-content>

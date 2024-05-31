@@ -5,8 +5,10 @@ import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { merge } from 'rxjs';
 import { DashboardCriteria } from 'src/app/library/core/models/dashboard/dashboard-criteria.model';
 import { DashboardService } from './dashboard.service';
+import { environment } from 'src/environments/environment';
 
 import * as moment from 'moment';
+import { AuthService } from 'src/app/library/shared/services/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,6 +28,7 @@ export class DashboardComponent implements OnInit {
   dateRanges: Array<any> = [];
   zonewiseSRs: Array<any> = [];
   completedSRs: Array<any> = [];
+  permissionData : any;
   statuses: any = {
     ALL: 0, WAPPR: 0, APPR: 0,
     ASGN: 0, INPRG: 0, WCOMP: 0,
@@ -41,22 +44,26 @@ export class DashboardComponent implements OnInit {
     COMPLETED: 0,UNASSIGNED :0,INPROGRESS:0,
     Delay:0,COMPLETED1: 0,NWORK:0
   };
+  resourceMasterId = environment.ResourceMasterIds;
   monthWiseData: Array<any>;
-
   constructor(readonly service: DashboardService,private router:Router,
-    readonly formBuilder: RxFormBuilder) {
+    readonly formBuilder: RxFormBuilder,readonly authService: AuthService) {
       
       // this.dashboardForm.valueChanges.subscribe((selectedDate: Date) => {
-      //   // Perform any actions or call functions based on the selected date
-      //   console.log('Selected date:', selectedDate);
-      //   // You can replace the console.log statement with your custom code
-      // });
-  }
+        //   // Perform any actions or call functions based on the selected date
+        //   console.log('Selected date:', selectedDate);
+        //   // You can replace the console.log statement with your custom code
+        // });
+      }
 
   ngOnInit(): void {
     console.log("its in Dashbord");
     this.bindDropdowns();
     this.initialize();
+    this.authService.GetRolePermissions().subscribe((response: any) => {
+      this.permissionData = response;
+      //response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.JobWorkOrderReport ))
+    })
     // this.initializeLineChart();
     // this.initializeDonutChart();
     // this.lineColumnChart();
@@ -94,7 +101,13 @@ export class DashboardComponent implements OnInit {
     this.detectValueChanges();
     this.search();
   }
-
+  canInsertPermission(data:any): boolean {
+    const index = this.permissionData.data.result.findIndex(
+      (x: any) => x.resourceId === data
+    );
+    console.log("This is a index",index)
+    return index !== -1 ? this.permissionData.data.result[index].canInsert : false;
+  }
   detectValueChanges() {
     // merge(...[
     //   this.dashboardForm.get('zoneIds')?.valueChanges,
@@ -393,10 +406,10 @@ export class DashboardComponent implements OnInit {
   UserReport(){
     this.router.navigateByUrl('/WorkerReport');
   }
-  ClientReport(){
-    this.router.navigateByUrl('/ClientReport');
+  addClient(){
+    this.router.navigateByUrl('/ClientReportDetail');
   }
-  stockReport(){
+  addStock(){
     this.router.navigateByUrl('/StockDetail');
   }
   addjobwork(){
@@ -408,10 +421,13 @@ export class DashboardComponent implements OnInit {
   SellingDetail(){
     this.router.navigateByUrl('/SellingDetail');
   }
-  VendorMaster(){
-    this.router.navigateByUrl('/Vendor');
+  addVendor(){
+    this.router.navigateByUrl('/VendorDetail');
   }
-  
+  addCustomer(){
+    this.router.navigateByUrl('/CustomerDetail');
+
+  }
   service_requests(statusIds:any){
     let requestFrom ='';
     let requestTo ='';

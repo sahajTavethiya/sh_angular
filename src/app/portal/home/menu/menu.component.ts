@@ -126,13 +126,13 @@ export class MenuComponent implements OnInit {
       if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.ManufactureOrderReport || x.resourceId == environment.ResourceMasterIds.VendorMaster ||
         x.resourceId == environment.ResourceMasterIds.CustomerMaster || x.resourceId == environment.ResourceMasterIds.ProductionReport  || x.resourceId == environment.ResourceMasterIds.SellingReport ) && x.canView == true) !== -1) {
         let ServiceRequests = {
-          displayName: 'Manufactur',
+          displayName: 'Manufacture',
           matIcon: 'dashboard',
-          children: [ { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 }]
+          children: [ { displayName: 'Manufacture Order Report', matIcon: 'list', url: '/OrderReport', type: 1 }]
         }
         ServiceRequests.children = [];
         if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.ManufactureOrderReport)?.canView) {
-          let A =  { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 };
+          let A =  { displayName: 'Manufacture Order Report', matIcon: 'list', url: '/OrderReport', type: 1 };
           ServiceRequests.children.push(A)
         };
         if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.VendorMaster)?.canView) {
@@ -189,7 +189,7 @@ export class MenuComponent implements OnInit {
       }
 
       if (response.data.result.findIndex((x: any) => (x.resourceId == environment.ResourceMasterIds.TransactionMaster || x.resourceId == environment.ResourceMasterIds.GetMoneyFrom ||
-        x.resourceId == environment.ResourceMasterIds.GiveMoneyTo ) && x.canView == true) !== -1) {
+        x.resourceId == environment.ResourceMasterIds.GiveMoneyTo  || x.resourceId == environment.ResourceMasterIds.GetMoneyFrom   || x.resourceId == environment.ResourceMasterIds.EmployeeWorkerReport ) && x.canView == true) !== -1) {
         let ServiceRequests = {
           displayName: 'Account Report',
           matIcon: 'dashboard',
@@ -198,6 +198,10 @@ export class MenuComponent implements OnInit {
         ServiceRequests.children = [];
         if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.TransactionMaster)?.canView) {
           let A = { displayName: 'Transaction Report', matIcon: 'list', url: '/Transaction', type: 1 };
+          ServiceRequests.children.push(A)
+        };
+        if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.EmployeeWorkerReport)?.canView) {
+          let A = { displayName: 'Employee Work Report', matIcon: 'list', url: '/EmployeeWorkReport', type: 1 };
           ServiceRequests.children.push(A)
         };
         if (response.data.result.find((x: any) => x.resourceId == environment.ResourceMasterIds.GetMoneyFrom)?.canView) {
@@ -222,7 +226,7 @@ export class MenuComponent implements OnInit {
       // {
       //   displayName: 'Manufactur', matIcon: 'dashboard',
       //   children: [
-      //     { displayName: 'Manufactur Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
+      //     { displayName: 'Manufacture Order Report', matIcon: 'list', url: '/OrderReport', type: 1 },
       //     { displayName: 'Vendor Masters', matIcon: 'list', url: '/Vendor', type: 1 },
       //     { displayName: 'Customer Masters', matIcon: 'list', url: '/Customer', type: 1 },
       //     { displayName: 'Production Report', matIcon: 'list', url: '/ProductionReport', type: 1 },

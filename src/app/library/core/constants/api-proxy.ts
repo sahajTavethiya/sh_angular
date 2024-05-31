@@ -292,6 +292,10 @@ export class ApiProxy {
     getJobWorkOrderDetailById() {
       return `/admin/getJobWorkOrderDetailById`;
     },
+    getWorkerAccountReport() {
+      return `/employee/getWorkerAccountReport`;
+    },
+    
 
     getTotalSubmitWorkDetailByOrderId() {
       return `/manager/getTotalSubmitWorkDetailByOrderId`;

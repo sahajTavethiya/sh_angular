@@ -109,6 +109,7 @@ import { UserMasterRoleGridComponent } from './portal/reports/user-master-role-g
 import { UserMasterRoleAddComponent } from './portal/reports/user-master-role-grid/user-master-role-add/user-master-role-add.component';
 import { GiveMoneyToGridComponent } from './portal/reports/give-money-to-grid/give-money-to-grid.component';
 import { GetMoneyFromGridComponent } from './portal/reports/get-money-from-grid/get-money-from-grid.component';
+import { EmployeeWorkReportComponent } from './portal/reports/employee-work-report/employee-work-report.component';
 GetMoneyFromGridComponent
 @NgModule({
   declarations: [
@@ -198,6 +199,7 @@ GetMoneyFromGridComponent
     UserMasterRoleAddComponent,
     GetMoneyFromGridComponent,
     GiveMoneyToGridComponent,
+    EmployeeWorkReportComponent,
   ],
   imports: [
     BrowserModule,

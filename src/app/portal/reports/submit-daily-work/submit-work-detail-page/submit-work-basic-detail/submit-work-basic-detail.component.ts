@@ -20,6 +20,7 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
   orderproductData:any;
   requestId:number;
   showAddButton=false;
+  AssignTaskDetail : any
   constructor(readonly formBuilder: RxFormBuilder, readonly dialog: MatDialog, readonly service: SubmitWorkService,readonly route: ActivatedRoute,readonly authService: AuthService,) { }
 
   ngOnInit(): void {
@@ -29,16 +30,23 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
     }
     this.service.getJobWorkOrderDetailById(obj).subscribe((response: any) => {
       this.orderproductData = response.data.JobWorkProductData;
-    })
+    });
+    this.service.getAssignListByOrderId(obj).subscribe((response: any) => {
+      if (response.status == 200 && response.data) {
+      
+        this.AssignTaskDetail = response.data;
+    }
+    });
     this.authService.GetRolePermissions().subscribe((response:any)=>{
       console.log("this is a response",response.data.result);
 
      this.showAddButton = response.data.result.find((obj: any) => obj.resourceId == environment.ResourceMasterIds.DailyWorkStatus)?.canInsert;
    })
   }
-  addOpenSaveDailyWork(tblId:number) {
+  addOpenSaveDailyWork(SubOrderId:number,AssignTaskId : number) {
+
     const dialogRef = this.dialog.open(AddSubmitWorkDetailPopupComponent, {
-      data: { AssignList: this.AssignList,tblId:tblId },
+      data: { AssignList: this.AssignList,subOrderId:SubOrderId,assignTaskId : AssignTaskId },
       width: '6000px'
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -50,9 +58,6 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
   }
   addManpowerTaskTime(taskTime: DailyWorkBasicDetail) {
     const DailyWorkBasicDetails = this.requestForm.controls.DailyWorkBasicDetail as FormArray;
-
-    console.log('taskTime11');
-    console.log(taskTime);
     if (taskTime) {
       const newTaskTime = new DailyWorkBasicDetail(taskTime);
 
@@ -76,9 +81,6 @@ export class SubmitWorkBasicDetailComponent implements OnInit {
         const row = assignedManpowerLists.at(index);
         if (row.get('tblId')?.value > 0) {
           row.get('isDelete')?.setValue(1);
-          // assignedManpowerLists.removeAt(index);
-
-          // row.get('rowStatus')?.setValue(4);
         } else {
           assignedManpowerLists.removeAt(index);
         }
